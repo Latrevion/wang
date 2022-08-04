@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>001转化为数字</title>
+</head>
+<body>
+<script>
+  // //数字-隐式类型转换
+  // var num =5
+  // var str = '2'
+  // console.log('数字-隐式转换',typeof (num-str),num-str)
+  //
+  // //+一般是把数字转化为字符串，然后拼接
+  // console.log('数字-隐式转换',typeof (num+str),num+str)
+
+  //数字-显示类型转换
+  //库函数：Number()
+  // var tmp1 = "2"
+  // var tmp  = Number(tmp1)
+  // console.log('数字-显示类型转换',typeof (tmp),tmp)
+  //
+  // //NaN not a number
+  // tmp1 ='xyz'
+  // var tmp  = Number(tmp1)
+  // console.log('xyz',tmp)
+  //
+  // //除了长得像数字的字符串外
+  // var tmp2 = true
+  // var tmp3  = Number(tmp2)
+  // console.log('数字-显示类型转换 true',typeof (tmp3),tmp3)
+  //
+  // var tmp2 = false
+  // var tmp3  = Number(tmp2)
+  // console.log('数字-显示类型转换 false',typeof (tmp3),tmp3)
+  //
+  //
+  // var tmp2 =null
+  // var tmp3  = Number(tmp2)
+  // console.log('null',typeof (tmp3),tmp3)
+  //
+  // var tmp2 =''
+  // var tmp3  = Number(tmp2)
+  // console.log('空字符串',typeof (tmp3),tmp3)
+  //
+  // console.log(typeof(NaN))
+  //
+  // //NaN
+  // var tmp2 =undefined
+  // var tmp3  = Number(tmp2)
+  // console.log('undefined',typeof (tmp3),tmp3)
+
+  //NaN
+  //   var tmp1 ='1.5.3'
+  //   var tmp = Number(tmp1)
+  //   console.log('1.5.3',tmp)
+
+  //库函数 parseInt() ,把一个字符串按照整数方式解析，如果只有开头一部分，就解析开头部分，否则返回NaN
+  // var tmp1 ='1234'
+  // var tmp = parseInt(tmp1)
+  // console.log('1234',tmp)
+  //
+  // var tmp1 ='100px'
+  // var tmp = parseInt(tmp1)
+  // console.log('100px ',tmp)
+  //
+  // //parseInt 当做取整来用
+  //
+  // var tmp1 ='1.5'
+  // var tmp = parseInt(tmp1)
+  // console.log('1.5',tmp)
+
+  //undefined null false    parseInt()都算作NaN
+
+  //区别 Number()和parseInt()
+  //1.Number可以，parseInt不可以：false，null，''
+  //2.Number不可以，parseInt可以：数字开头的字符串
+  //3.都不可以：undefined，字母开头的字符串
+  //
+  // var tmp1 ='10.00'
+  // var tmp = parseInt(tmp1)
+  // console.log('10.00',tmp)
+  //
+  // //库函数：parseFloat 用于浮点数或科学计数法
+  //
+  // var tmp1 ='10.00'
+  // var tmp = parseFloat(tmp1)
+  // console.log('10.00 ',tmp)
+
+  //isNaN，不是数字，带有隐式转换，转换为数字。
+  // console.log('NaN',isNaN(NaN));
+  // console.log('a100',isNaN('a100'));
+  // console.log('undefined',isNaN(undefined));
+  // console.log('null',isNaN(null));
+  // console.log('12345',isNaN('12345'));
+  // console.log('空字符串',isNaN(''));
+
+</script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>005数组练习</title>
+</head>
+<body>
+<script>
+  //练习1，对数组中的数字进行求和
+  // var a = [1,5,2,4,3,6,12,87]
+  // var count = 0
+  // for (var i = 0;i<a.length;i++){
+  //    count += a[i]
+  // }
+  // console.log(count)
+  //练习2，求数组中的平局值
+  // var a = [1,5,2,4,3,6,12,87]
+  // var count = 0
+  // for (var i = 0;i<a.length;i++){
+  //    count += a[i]
+  // }
+  // console.log(count/a.length)
+
+
+  //练习3,求数组中的最大值
+  // var a = [1, 5, 2, 4, 3, 6, 12, 87]
+  // var max = a[0]
+  // var mIndex = 0;
+  // for (var i = 1; i < a.length; i++) {
+  //   if (max < a[i]) max = a[i]
+  //   mIndex = i
+  // }
+  // console.log(max,mIndex)
+
+  // 练习4，求数组的最小值
+  //  var a = [1, 5, 2, 4, 3, 6, 12, 87]
+  //  var min = a[0]
+  // for (var i =1;i<a.length;i++){
+  //   if (min>a[i])min = a[i]
+  // }
+  // console.log(min)
+
+  // 练习5，倒叙遍历一个数组
+  //  var a = [1, 5, 2, 4, 3, 6, 12, 87]
+  //  // for(var i = 0; i<a.length; i++){
+  //  //   console.log(a[a.length-1-i])
+  //  // }
+  //
+  //  for (var i=a.length-1;i>=0;i--){
+  //    console.log(a[i])
+  //  }
+
+  //练习6 自己实现join('-')功能
+ //  var a = [1, 5, 2, 4, 3, 6, 12, 87]
+ //  // console.log(a.join("-"))
+ //  b =''
+ // for (var i=0;i<a.length;i++){
+ //   if (i === a.length - 1){
+ //       b = b+ a[i]
+ //   }else{
+ //
+ //   b =b+ a[i]+'-'
+ //   }
+ // }
+ //  console.log(b)
+
+  //练习7，翻转数组
+  // var a = [1, 5, 2, 4, 3, 6, 12, 87]
+  // var b = []
+  // for (var i=a.length-1;i>=0;i--){
+  //   b.push(a[i])
+  // }
+  // console.log(b)
+  //练习8 数组去重
+  // var a = [1, 1, 3, 2, 6, 2, 6, 8, 9]
+  //思路1，准备一个新的数组，轮询原数组元素，如果改元素不粗在于新数组中，加入新数组
+  // var b = []
+  // for (var i = 0; i < a.length; i++) {
+  //   var found = false
+  //   // 检测a[i]是否在新数组中存在
+  //   for (var j = 0; j < b.length; j++) {
+  //     if (a[i] === b[j]) {
+  //         found =true
+  //         break;
+  //     }
+  //   }
+  //   //基于检查，把不存在新数组的元素 加入新数组
+  //   if (!found){
+  //     b.push(a[i])
+  //   }
+  // }
+  // console.log(b)
+
+  // for (var i = 0; i < a.length; i++) {
+  //
+  //   // 检测a[i]是否在新数组中存在
+  //   for (var j = 0; j < b.length; j++) {
+  //     if (a[i] === b[j]) {
+  //       break;
+  //     }
+  //   }
+  //   //基于检查，把不存在新数组的元素 加入新数组
+  //   if (j >=b.length){
+  //     b.push(a[i])
+  //   }
+  // }
+  // console.log(b)
+
+  // 思路2，对数组进行排序，相同的元素是一起的
+  //  var a = [1, 1, 3, 2, 6, 2, 6, 8, 9]
+  //  var b = []
+  //  a.sort(function (a,b){
+  //   return  a - b
+  //  })
+  //
+  //  for (var i =0;i<a.length;i++){
+  //    if (a[i]!==b[b.length-1]){
+  //      b.push(a[i])
+  //    }
+  //  }
+  //
+  //  console.log(b)
+
+  // 升级：数字，字符串，boolean，undefined，null 去重
+  //思路1 ===
+  //思路2,扫描数组, 数字,字符串,boolean分堆, 遇到undefined, null,记录
+  //       分别对数字,字符串,boolean进行排序,然后合并
+</script>
+</body>
+</html>

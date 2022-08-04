@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>003转化为boolean</title>
+</head>
+<body>
+<script>
+  //隐式转换
+  // var b = !0;
+  // console.log(typeof b, b)
+  //
+  // var b = !1;
+  // console.log(typeof b, b)
+  //
+  // var b = !1000;
+  // console.log(typeof b, b)
+  //
+  // var b = !!1000;
+  // console.log(typeof b, b)
+
+  // var b = !undefined
+  // console.log(typeof b, b)
+  //
+  // var b = !null
+  // console.log(typeof b, b)
+  //
+  // var b = !''
+  // console.log(typeof b, b)
+  //
+  // var b = !NaN
+  // console.log(typeof b, b)
+
+  //&& 与|| 不进行强制类型转换
+  // var b = undefined && 5;
+  // console.log(typeof b, b);
+
+  //显示类型转换
+  //库函数：Boolean()
+  var b = Boolean(0)
+  console.log(typeof b, b)
+
+  var b = Boolean(-1)
+  console.log(typeof b, b)
+
+  var b = Boolean(undefined)
+  console.log(typeof b, b)
+
+  var b = Boolean(null)
+  console.log(typeof b, b)
+
+  var b = Boolean("")
+  console.log(typeof b, b)
+</script>
+</body>
+</html>

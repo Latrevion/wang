@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>002转化为字符串</title>
+</head>
+<body>
+
+<script>
+  //隐式转换
+  //使用空字符串+一个东西 直接转换为字符串
+  // var tmp = ''+2;
+  // console.log('空字符串+2',typeof(tmp),tmp  )
+  //
+  //
+  // var tmp = ''+null;
+  // console.log('空字符串+null',typeof(tmp),tmp  )
+  //
+  // var tmp = ''+undefined;
+  // console.log('空字符串+undefined',typeof(tmp),tmp  )
+  //
+  // var tmp = ''+false;
+  // console.log('空字符串+false',typeof(tmp),tmp  )
+
+
+
+  //显示类型转换
+  //String() 生成字符串
+  // var tmp = String(2)
+  // console.log('String(2)',typeof tmp,tmp)
+  //
+  // var tmp = String(null)
+  // console.log('String(null)',typeof tmp,tmp)
+  //
+  // var tmp = String(undefined)
+  // console.log('String(undefined)',typeof tmp,tmp)
+  //
+  // var tmp = String(false)
+  // console.log('String(false)',typeof tmp,tmp)
+
+  //toString() 成员函数
+  // var tmp = 80
+  // var tmp1 = tmp.toString()
+  // console.log('tmp.toString()',typeof  tmp1,tmp1 )
+  //
+  // //十六进制
+  // tmp1  = tmp.toString(16)
+  // console.log('tmp.toString(16)',tmp1)
+
+  tmp = true
+  tmp1 = tmp.toString()
+  console.log('tmp.toString()-true',tmp1)
+
+  //null，undefined 不可使用toString()
+  // tmp = null
+  // // tmp = undefined
+  // tmp1 = tmp.toString()
+
+  //有一个二进制字符串，变成十六进制的字符串
+  var str = '10101001' //1+2^3+2^5+2^7 =169 = 10*16+9 =A9
+
+
+  var num = parseInt(str,2)
+  console.log(num)
+  if (!isNaN(num)){
+    console.log(num.toString(16))
+  }
+
+</script>
+</body>
+</html>

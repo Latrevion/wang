@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>006函数参数传递的区别</title>
+</head>
+<body>
+<script>
+  // 原始类型的参数
+  // var a = 5
+  // var b= 3
+  // function exchange(x,y) {
+  //   var tmp = x;
+  //   x =y
+  //   y =tmp
+  // }
+  //   exchange(a, b)
+  // console.log(a, b)
+
+  // 引用参数类型
+  var a =[5]
+  var b=[3]
+  function exchange(x,y) {
+    var tmp = x[0]
+    x[0]=y[0]
+    y[0]=tmp
+  }
+  exchange(a, b)
+  console.log(a, b)
+</script>
+</body>
+</html>

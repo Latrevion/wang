@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Title</title>
+</head>
+<body>
+<script>
+
+//函数声明
+// function f(){
+//   return 0
+// }
+//
+// function ff(a,fn,b){
+//   return 0
+// }
+//
+// //函数表达式
+// var f1 = function fn1(){
+//   return 1
+// }
+// //=> 化简
+// var f1 = function(){
+//   return 1
+// }
+//
+//
+// ff(1,function fn2(){
+//   return 2
+// },2)
+// //=> 化简
+// ff(1,function (){
+//   return 2
+// },2)
+
+//函数表达式不会污染名字空间，这是为什么很多js库使用函数表达式
+
+//立即执行函数
+// (function (){
+//   var a =5
+//   var b= 3
+//   console.log(a+b)
+// })()
+
+function f1(){
+  //return的返回值不止一行的时候，必须用上括号
+  return(
+  [
+    [1,2],
+    [3,4]
+  ])
+}
+
+console.log(f1())
+
+
+</script>
+</body>
+</html>

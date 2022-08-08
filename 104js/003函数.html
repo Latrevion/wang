@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  // 函数定义
+  // 函数声明
+  //变量，函数名：标识符  字母下划线开头 不能使用-  big_num
+
+  // 标识符命名规则
+  //小驼峰：单词串写，第一个单词小写，后面的单词第一个字母大写，其余字母小写  getMaxOfArray
+  //大驼峰：单词串写,每个单词第一个字母大写，其余字母小写 =》构造函数
+  //匈牙利：window API i_小驼峰
+  //function <函数名>([形参]){
+  // 函数体
+  // }
+  // 1.函数可以有形参，也可以没有
+  // 2.形参是函数定义过程中参与运算的变量
+  // 3.实际参数，是函数调用时传递给函数的参数
+  // 4.函数可以有返回值，return，如果没有return，函数返回undefined
+
+  //
+  // function getMaxOfArray(a){
+  //   var max = a[0]
+  //   for (var i =1;i<a.length;i++){
+  //      if (max<a[i]){
+  //        max = a[i]
+  //      }
+  //   }
+  //   return max
+  // }
+  //
+  // var b =[1,2,4,6,17,9]
+  // var c =getMaxOfArray(b)
+  // console.log(c)
+  //
+  // var b1 = [1,220,4]
+  // var max =getMaxOfArray(b1)
+  // console.log(max)
+
+  // 练习1，把一个数反过来 12345=》54321  1.2=》2.1
+  // function reverseNumber(num) {
+
+
+  // 1. 定义输入形参的有效形式,并且想清楚如果形参无效,那么应该用什么样的策略处理？
+  //    策略一,错了,就返回.
+  //    策略二,如果错了,能处理多少就处理多少
+
+  // // 1. num如果不是数字, 返回空字符串
+  //   if (typeof num!=='number'){
+  //     return '';
+  //   }
+  // // 2.num如果是NaN 或infinity 返回空字符串
+  //   if (!isFinite(num)){
+  //     return ''
+  //   }
+  //
+  //   if (isNaN(num)){
+  //     return ''
+  //   }
+  //
+  //   return  num.toString().split('').reverse().join('')
+  // }
+  // //NaN infinity 也是Number类型
+  // //设定相应的测试用例 TDD Test-Driven Development
+  // console.log('字符串=>',reverseNumber('aaa'))
+  // console.log('NAN=>',reverseNumber(NaN))
+  // console.log('infinity=>',reverseNumber(Infinity))
+  // console.log('54321=>',reverseNumber(54321))
+  // console.log('1.2=>',reverseNumber(1.2))
+
+  // 练习2：写一个函数，能够返回两个数字的和
+  //   function sum(a, b){
+  //     if (typeof a !== 'number' || typeof b !== 'number'){
+  //       return ''
+  //     }
+  //
+  //     if (!isFinite(a) || !isFinite(b)) {
+  //       return ''
+  //     }
+  //
+  //     if (isNaN(a) || isNaN(b)) {
+  //       return ''
+  //     }
+  //     return  a+b
+  //   }
+  //
+  // console.log('aaa-bbb =》',sum('aaa','bbb'))
+  // console.log('NaN-bbb =》',sum(NaN,'bbb'))
+  // console.log('1-NaN=》',sum(1,NaN))
+  // console.log('1-infinity=》',sum(1,Infinity))
+  // console.log('1-3',sum(-1,0))
+
+
+  // 练习3 写一个函数，能够返回n-m之间数字的和，n和m都是一样整数，且m>n
+  // function nAddToM(n, m) {
+  //   // 如果n》m 返回 ‘’
+  //   if (n > m) {
+  //     return ""
+  //   }
+  //   // 如果m n不是整数 返回‘’
+  //   if (n % 1 !== 0 || m % 1 !== 0) {
+  //     return ""
+  //   }
+  //
+  //   var sum = 0
+  //   for (var i = n; i < m + 1; i++) {
+  //     sum += i
+  //   }
+  //   return sum
+  // }
+  //
+  // console.log(nAddToM(1, 10))
+  // console.log(nAddToM(-1, 2))
+  // console.log(nAddToM(0, 5))
+  // console.log("0.1,5=>", nAddToM(0.1, 5))
+  // console.log("NaN 5 =>", nAddToM(NaN, 5))
+  // console.log("ifinity 5 =>", nAddToM(Infinity, 5))
+  // console.log("aaaa 5 =>", nAddToM('aaaa', 5))
+
+
+  // 练习4: 写一个函数,输入半径r,返回圆的面积
+  // function round(r) {
+  //   if (typeof r !=='number'){
+  //     return ''
+  //   }
+  //
+  //   if (!isFinite(r)){
+  //     return ''
+  //   }
+  //
+  //   if (isNaN(r)){
+  //     return ''
+  //   }
+  //
+  //   if (r<=0){
+  //     return ''
+  //   }
+  //  return  3.14 * r * r
+  // }
+  //
+  // console.log(round(2))
+  // console.log(round(NaN))
+  // console.log(round(Infinity))
+  // console.log(round(-1))
+  // console.log(round(0))
+
+
+  // 练习5: 写一个函数,输入正整数,判断这个数是否是质数.
+  // function isNum(num) {
+  //先处理NaN与Infinity的情况，因为他们也是number类型，质数是必须大于1的自然数，同时只能被1和自身整除
+  //   if (typeof num!=='number'|| num<=1){
+  //     return false
+  //   }
+  //   for (var i=2;i<num;i++){
+  //     if (num%i ===0){
+  //       return false
+  //     }
+  //   }
+  //   return true
+  //
+  // }
+  // console.log('1',isNum(1))
+  // console.log('3',isNum(3))
+  // console.log('4',isNum(4))
+  // console.log('0',isNum(0))
+  // console.log('2',isNum(2 ))
+  // console.log('9',isNum(9 ))
+  // console.log('7',isNum(7))
+  // console.log('11',isNum(11))
+
+</script>
+</body>
+</html>

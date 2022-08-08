@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>004函数作为参数</title>
+</head>
+<body>
+<script>
+  // 函数作为参数
+
+  function f1() {
+    console.log("hello,i am f1")
+    return "f1 say hello"
+  }
+
+  function f2(fn) {
+    console.log(fn())
+    console.log(fn)
+  }
+
+  f2(f1)
+</script>
+</body>
+</html>

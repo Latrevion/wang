@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>007函数的嵌套</title>
+</head>
+<body>
+<script>
+  // //求斜边的长度
+  // var a = 3
+  // var b = 4
+  //
+  //
+  // function hypotenuse(a, b) {
+  //   //函数内部也可以使用函数声明
+  //   // function square(a) {
+  //   //   return a * a
+  //   // }
+  //
+  //   var square = function (a) {
+  //     return a * a
+  //   }
+  //   return Math.sqrt(square(a) + square(b))
+  // }
+  //
+  // var h = hypotenuse(a, b)
+  // console.log(h)
+
+  //任意一个函数，可以调用其外部定义的函数，也可以调用一个自己内部定义的函数
+  //一个函数是否可以调用自己? true
+  // 递归
+
+  //练习1 n的阶乘
+  // function fact(n) {
+  //   if (n <= 1) {
+  //     return 1
+  //   } else {
+  //     return n * fact(n - 1)
+  //   }
+  // }
+  //
+  // console.log(fact(5))
+
+  // 练习2: 有一行台阶,N阶,N是正整数, 可以一步一阶,一步两阶,一步三阶,一共有多少种走法？
+  // 函数名叫step
+  // N:1 => 1,
+  // N:2 => 一步两阶; 先走一步, step(1) => 1 + 1 = 2,
+  // N:3 => 一步三阶; 先走一步一阶, step(2); 先走一步两阶, step(1) => 1 + 2 + 1 = 4;
+  // N:4 => 一步三阶, step(1); 一步两阶, step(2); 一步一阶; step(3) => 1 + 2 + 4 = 7;
+  // N:n => step(n-3) + step(n-2) + step(n-1);
+  // function step(n) {
+  //   switch (n) {
+  //     case 1:
+  //       return 1
+  //       break
+  //     case 2:
+  //       return 1 + step(1)
+  //       break
+  //     case 3:
+  //       return 1 + step(2) + step(1)
+  //       break
+  //     default:
+  //       return step(n - 3) + step(n - 2) + step(n - 1)
+  //   }
+  // }
+  //
+  // console.log(step(1))
+  // console.log(step(2))
+  // console.log(step(3))
+  // console.log(step(4))
+  // console.log(step(5))
+  // console.log(step(6))
+  // console.log(step(7))
+  // console.log(step(8))
+
+  // 汉诺塔: 三根柱子, A, B, C, N片, 初始,所有的片都在一个柱子上,成为源柱,最后将所有的片挪到另一个柱子上,成为目的柱
+  // 规则: 1. 一次只能移动一个片,且片移动后必须放到某个柱子上
+  //       2. 不予许一个片放在比他小的片上
+  // n: 1 doHanoi(1, A, B, C)
+  // n: 2 doHanoi(1, A, C, B), 2 -> B, doHanoi(1, C, B, A)
+  // n: 3 doHanoi(2, A, C, B), 3 -> B, doHanoi(2, C, B, A)
+  // ...
+  // n: n doHanoi(n-1, A, C, B), n -> B, doHanoi(n-1, C, B, A)
+
+  // function doHanoi(n,src,dest,hpr) {
+  //   if (n>1){
+  //     doHanoi(n-1,src,hpr,dest)
+  //     console.log('Move No. '+n+' dish from '+src+' to '+dest)
+  //     doHanoi(n-1,hpr,dest,src);
+  //   }else if (n ===1){
+  //     console.log('Move No.'+n +'dish from'+src+'to'+dest)
+  //   }else{
+  //     console.log('Error')
+  //   }
+  // }
+  // doHanoi(2,'A','B',"C")
+  // // doHanoi(1,'A','B',"C")
+  // // doHanoi(1,'A','B',"C")
+
+
+  // 练习1, 实现一个函数，求小于n的所有的质数
+
+  // function isNum(n) {
+  //   let count = []
+  //   if (n <= 1 || typeof n !== "number" || n % 1 !== 0) {
+  //     return ""
+  //   }
+  //   for (let i = 2; i < n; i++) {
+  //     let ispush = true
+  //     for (let j = 2; j < i; j++) {
+  //       if (i % j === 0) {
+  //         ispush = false
+  //         break
+  //       }
+  //     }
+  //     if (ispush) {
+  //       count.push(i)
+  //     }
+  //
+  //   }
+  //   return count
+  // }
+  //
+  // console.log(isNum(10))
+  // console.log(isNum(20))
+  // console.log(isNum(30))
+
+
+  // 练习2, 实现一个函数, 参数就是n，敲七,非7的倍数,或者不含有7,可以打印出来;否则打印"敲"
+  function isSeven(n) {
+    for (let i = 1; i <= n; i++) {
+      if (i % 7 === 0 || (i + "").includes("7") !== false) {
+        console.log("敲")
+      } else {
+        console.log(i)
+      }
+    }
+  }
+  isSeven(21)
+</script>
+</body>
+</html>

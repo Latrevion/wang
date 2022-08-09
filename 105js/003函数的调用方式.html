@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>003函数的调用方式</title>
+</head>
+<body>
+<script>
+  //函数的调用方式
+  //1.普通调用方式
+  function f1(x) {
+    console.log(x)
+  }
+
+  f1("hello world!")
+
+  // 2.对象的成员函数
+  var obj = {
+    f2: function (x) {
+      console.log(x)
+    }
+  }
+
+  obj.f2("hello world 2!")
+
+  //3.构造函数
+  var a = new Array()
+  var obj = new Object()
+
+
+  // 4.间接调用
+  // call 或者 apply 主要区别在于可以绑定this
+
+  var obj3 = {
+    myValue: 500,
+    f3: function (x,y) {
+      console.log(this.myValue)
+      console.log(x,y)
+    }
+  }
+
+  obj3.f3(3,4)
+  console.log(obj3.f3)
+
+  var f4 = obj3.f3
+  //等价于 window.f4 = obj3.f3
+
+  console.log(f4)
+  window.f4(3,4)
+  f4.call(obj3,3,4)
+  f4.apply(obj3,[3,4])
+
+</script>
+</body>
+</html>

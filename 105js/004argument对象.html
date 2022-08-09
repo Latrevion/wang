@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>004argument对象</title>
+</head>
+<body>
+<script>
+  // 形参与实参
+  //形参与实参的数量，类型要一致
+  // 可不可以不一致：可以
+  // 面试题
+  //       1. 形参多,但是调用的时候,某些实参可以省略
+  //       2. 形参数量有限,实参会给如不定个数的更多参数.
+
+  //形参与实参的绑定
+  // 需要知道形参的个数：f.length
+  //需要知道实参的个数 arguments.length
+  // 形参和实参是不同的变量,但是是系统自动绑定的. 如果开始给了，就绑定。开始没给，就没绑定。
+
+  // function f(a,b,c){ //形参
+  // console.log(a,b, c,f.length)
+  // console.log(arguments) //实参的数组
+  // console.log(arguments[0],arguments.length)
+  //
+  // //枚举
+  // for (var i= 0;i<arguments.length;i++){
+  //   console.log(arguments[i])
+  // }
+  // }
+
+  // f(1)
+  // f(1,2,3)//实参
+
+  //函数表达式的递归
+  var fact = function (n) {
+    if (n <= 1) {
+      return 1
+    } else {
+      return n * arguments.callee(n - 1)
+    }
+  }
+
+  console.log(fact(5))
+</script>
+</body>
+</html>

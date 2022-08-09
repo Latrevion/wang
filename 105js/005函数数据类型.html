@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>005函数数据类型</title>
+</head>
+<body>
+<script>
+  // var f =function (x) {
+  //   console.log(x)
+  //
+  // }
+
+  // 如何判断传入的参数是一个函数
+  //1.typeof
+  // if(typeof  f === 'function'){
+  //   console.log('f is function')
+  // }else {
+  //   console.log("not function")
+  // }
+  //  typeof一般用于原始类型
+  //null 是原始类型，但是typeof null 是object
+  //函数是引用类型，但是typeof f 是function
+
+  //2.constructor.name
+  // if(f.constructor.name === 'Function'){
+  //   console.log('f is function')
+  // }else {
+  //   console.log("not function")
+  // }
+
+  // 作业,实现一个对象 myMath
+  //      两个函数: maxOf()
+  //                   三种情况, 1. 有两个或者两个以上的数字参数, 返回最大的数,参数有其他类型,忽略,如果不足两个,报错
+  //                            2. 只有一个参数,这个参数是一个数组, 把数组里最大的数字返回,如果数组里的数字不足2个,报错,如果有其他类型,忽略
+  //                            3. 只有一个参数,这个参数是一个对象, 把对象身上所有的数字属性中数字最大的返回,如果数字属性不足2个,报错,如果有其他类型,忽略.
+  //                   配合10个测试用例
+  //               minOf() 三种情况同上.
+
+
+  var myMath ={
+    maxOf:function (a,b) {
+      if (arguments.length>=2){
+        var max =arguments[0]
+        for (var i=0;i<arguments.length;i++){
+          if (max<arguments[i]){
+            max = arguments[i]
+          }
+        }
+        // return max
+        console.log(max)
+      }else{
+
+      }
+    },
+    minOf:function () {
+
+    }
+  }
+  myMath.maxOf(1,2)
+  myMath.maxOf(1,2,3)
+  myMath.maxOf(1,2,3,4)
+  myMath.maxOf(-1,2,-3,4)
+  myMath.maxOf(-1,-2,-3,-4)
+  myMath.maxOf(0,-1,-2,-3,-4)
+</script>
+</body>
+</html>

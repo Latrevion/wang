@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>对象</title>
+</head>
+<body>
+<script>
+  //  //字面量
+  //  var obj ={}
+  //
+  //  //系统构造函数
+  //  var obj1 = new Object()
+  //
+  // //数据可以使任意的原始类型
+  //  obj.name='Book Name'
+  //  obj.pageNumber =300
+  //
+  //  //数据也可以是一个对象
+  // var author = {}
+  // author.firstName = "Napoleon"
+  // author.family = "Wang"
+  //
+  //  obj.author =author
+  //
+  //  //成员函数
+  //  obj.query = function (){
+  //    console.log('query')
+  //  }
+  //
+  //  obj.addPage = function () {
+  //    this.pageNumber++
+  //    console.log('addPage')
+  //  }
+  //
+  var obj = {
+    name: "Book Name",
+    pageNumber: 300,
+    author: {
+      firstName: "Napoleon",
+      familyName: "Wang"
+    },
+    query: function () {
+      console.log("query")
+    },
+    addPage: function () {
+      this.pageNumber++
+      console.log("addPage")
+    }
+  }
+
+
+  console.log(obj.name)
+  obj.addPage()
+  obj["addPage"]()
+
+
+  // 练习1: 实现一个小猫对象,橘黄色的,名字叫小花,今年四岁,可以喵喵叫,可以吃鱼,可以上房.
+  var cat = {
+    name: "xiaohua",
+    color: "yellow",
+    age: 4,
+    call: function () {
+      console.log("miao")
+    },
+    eat:function () {
+      console.log('eat fish')
+    }
+    ,
+    climb:function () {
+      console.log('climb house')
+    }
+  }
+
+
+  // 练习2: 实现一个手机对象,牌子是华为,型号是P30,价格5000, 可以打电话,可以发短信,还可以拍照
+
+  var phone ={
+    name:'huawei',
+    num:'p30',
+    price:5000,
+    call:function () {
+      console.log('call phone')
+    },
+    message:function () {
+      console.log('message')
+    },
+    photo:function () {
+      console.log('photo')
+    }
+  }
+</script>
+</body>
+</html>

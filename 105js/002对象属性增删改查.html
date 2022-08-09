@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>002对象属性增删改查</title>
+</head>
+<body>
+<script>
+  var obj = {
+    a: "aaa",
+    f1: function () {
+      console.log("f1")
+    }
+  }
+  //增加：
+  obj.b = "bbb"
+
+  obj["1"] = "11111"
+  obj["2"] = function () {
+    console.log(2)
+  }
+
+  //2.一个没有定义的变量直接赋值，会产生怎样的后果
+  function f2() {
+    aaa = 5
+  }
+
+  f2()
+  console.log(aaa)
+  //发生了什么？
+  //1.有个对象叫window
+  //2.所有在脚本中通过var定义的变量，都挂在window上
+  //3. 在任意位置,一个变量赋值都可以看做是在window上寻找这个变量
+  var abc = 123
+  console.log(window.abc)
+
+  //删除 delete
+  delete obj.b
+
+  //改
+  obj.a = 'bbb'
+
+  //查   //in
+  console.log('a' in  obj)
+  // console.log('ab' in  obj)
+
+  //hadOwnProperty
+  console.log(obj.hasOwnProperty('a'))
+
+  //枚举
+  for (var p in obj){
+    console.log(p)
+  }
+
+  //检查是否可枚举
+  console.log(obj.propertyIsEnumerable('1'))
+  console.log(obj.propertyIsEnumerable('toString'))
+</script>
+</body>
+</html>

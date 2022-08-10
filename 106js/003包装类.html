@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>003包装类</title>
+</head>
+<body>
+<script>
+  // 包装类的定义
+
+  // 包装类:
+  // 本身内部是基本类型,但是其本身是对象,object
+  var n1 =123
+  var n2 = new Number(123)
+
+  console.log(typeof n1)
+  console.log(typeof n2)
+
+
+  var s1 = 'aaa'
+  var s2 = new Array('aaa')
+  console.log(typeof s1)
+  console.log(typeof s2)
+
+  var b1 =true
+  var b2 = new Boolean(true)
+  console.log(typeof b1)
+  console.log(typeof b2)
+
+  var str = '1234'
+  var strTmp = new String(str)
+  console.log(strTmp.concat('56'))
+  // strTmp被销毁了
+
+
+  var i = 567
+  console.log(i.toString())
+
+  console.log(true.toString())
+
+
+
+</script>
+</body>
+</html>

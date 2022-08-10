@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>001工厂模式</title>
+</head>
+<body>
+<script>
+  //工厂模式：简单工厂 和 抽象工厂
+  //设计模式（design pattern）
+  // 谁提出的？ Gang of Four
+  // 主张？模式23种 能够更好的帮你解决一些你面对的问题
+  //  针对接口编程；更多使用组合而不是继承
+  // 简单工厂
+
+  //创建一些对象：person，dog
+
+  // var liSi = {}
+  // liSi.type = "person"
+  // liSi.name = "李四"
+  // liSi.age = 18
+  // // liSi.gender ='male'
+  // liSi.study = function () {
+  //   console.log("I am studying!")
+  // }
+  // liSi.say = function () {
+  //   console.log("Hello!")
+  // }
+  //
+  // liSi.eat = function () {
+  //   console.log("I am eating！")
+  // }
+  // //。。。省略
+  // var xiaoFang = {}
+  // xiaoFang.type = "person"
+  // xiaoFang.name = "小芳"
+  // xiaoFang.age = 16
+  // // xiaoFang.gender ='female'
+  // xiaoFang.study = function () {
+  //   console.log("I am studying!")
+  // }
+  // xiaoFang.say = function () {
+  //   console.log("Hello!")
+  // }
+  // xiaoFang.eat = function () {
+  //   console.log("I am eating！")
+  // }
+  //
+  // function letPersonSay(person){
+  //   console.log(person.name)
+  //   person.say()
+  // }
+  //
+  // letPersonSay(liSi)
+  // letPersonSay(xiaoFang)
+
+  var person = {}
+
+  person.createPerson = function (name, age, gender) {
+    var p = {}
+    p.type = "person"
+    p.name = name
+    p.age = age
+
+    // if(gender === undefined){
+    //   p.gender = 'male'
+    // }else{
+    //   p.gender =gender
+    // }
+
+    p.gender = gender || "male"
+
+    p.study = function () {
+      console.log("I am Study!")
+    }
+    p.say = function () {
+      console.log("Hello")
+    }
+    p.eat = function () {
+      console.log("I am eating!")
+    }
+    return p
+  }
+
+  var liSi = person.createPerson("李四", 18)
+  var xiaoFang = person.createPerson("小芳", 16,'female')
+
+  function letPersonSay(person) {
+    console.log(person.name,person.gender)
+    person.say()
+  }
+
+  letPersonSay(liSi)
+  letPersonSay(xiaoFang)
+
+  //练习dog.createDog
+  //dog name ,age ,type,bark(),eat()
+
+
+
+
+</script>
+</body>
+</html>

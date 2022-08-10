@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>002构造函数</title>
+</head>
+<body>
+<script>
+  //工厂模式
+  var createPerson = function (name, age, gender) {
+    var p = {}
+    p.type = "person"
+    p.name = name
+    p.age = age
+
+    p.gender = gender || "male"
+
+    p.study = function () {
+      console.log("I am Study!")
+    }
+    p.say = function () {
+      console.log("Hello")
+    }
+    p.eat = function () {
+      console.log("I am eating!")
+    }
+    return p
+  }
+
+
+  var liSi = createPerson("李四", 18)
+  //构造函数
+  // 每次以相同的方式来构造对象; 如果改变了构造函数,那么所有此后产生的对象都跟着改变.
+  // 特点: 大写字母开头
+
+
+  function Person(name, age, gender) {
+
+    this.type = "person"
+    this.name = name
+    this.age = age
+
+    this.gender = gender || "male"
+
+    this.study = function () {
+      console.log("I am Study!")
+    }
+
+    this.say = function () {
+      console.log("Hello")
+    }
+
+    this.eat = function () {
+      console.log("I am eating!")
+    }
+
+  }
+
+  var liSi = new Person("李四", 18)
+  var a = new Array()
+  var obj = new Object()
+
+  //练习dog构造函数
+
+  // 一个构造函数, 理论上不应该有返回值
+  // 如果有了呢？ 如果返回原始类型, 调用的时候没有用new, 函数会把现在要返回的值返回, 如果用了new, 返回this
+  //             如果返回引用类型, 无论调用时是否用了new,函数会把现在要返回的值返回.
+</script>
+</body>
+</html>

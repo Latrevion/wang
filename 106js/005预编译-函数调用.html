@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>005预编译-函数调用</title>
+</head>
+<body>
+<script>
+  // 8.函数中，所有变量声明，在函数的预编译阶段完成，所有变量的声明与实际的书写位置无关。
+
+  // function f() {
+  //   console.log(a) //undefined
+  //   var a  =25
+  //   console.log(a) //25
+  // }
+  //
+  // f()
+
+
+  //9.函数中，所有函数声明，在函数的预编译阶段完成，所有函数的声明与实际的书写位置无关。
+  //  function f() {
+  //    console.log(fin)
+  //
+  //    function fin() {
+  //      console.log("haha")
+  //    }
+  //  }
+  //
+  //  f()
+
+  // 10.函数中，如果变量与函数同名，那么函数将覆盖变量
+  // function f() {
+  //   console.log(fin)
+  //   var fin =123
+  //   console.log(fin)
+  //   function fin() {
+  //     console.log("haha")
+  //   }
+  // }
+  //
+  // f()
+
+  // 11函数中，只有函数能够覆盖变量，变量无法覆盖函数
+  // function f() {
+  //   console.log(fin)
+  //
+  //   function fin() {
+  //     console.log("haha")
+  //   }
+  //   var fin =123
+  // }
+  //
+  // f()
+
+
+  //12.函数中，如果有多个函数同名,最后声明的函数将覆盖所有前面的同名函数声明
+  //    并且,参数个数是忽略的,也就是说,JS压根不支持重载
+
+  // function f() {
+  //   console.log(fin)
+  //
+  //   function fin(x) {
+  //     console.log("haha1")
+  //   }
+  //
+  //   function fin(x) {
+  //     console.log("haha2")
+  //   }
+  //
+  //
+  // }
+  //
+  // f()
+
+  //13.当函数预编译后，遇到需要访问的变量或者函数，优先考虑自己AO中定义的变量和函数
+  // 如果找不到，才会在其定义上一层ao中寻找，直到GO，再找不到才报错
+  var scope = "global"
+
+  function f() {
+    console.log(1, scope)
+    var scope = "local"
+    console.log(2, scope)
+  }
+
+  f()
+  console.log(3, scope)
+
+  //			// var scope = 'global';
+  // function f(){
+  // 	console.log(1, scope); // undefined
+  // 	var scope = 'local';
+  // 	console.log(2, scope); // 'local'
+  // }
+  // f();
+  // console.log(3, scope); // 'global'
+  // // GO.scope -> 'global'
+  // // GO.f -> function()
+
+  // console.log(1,scope) //undefined
+  // var scope = 'global'
+  // function f() {
+  //   var scope = '1-local'
+  //   function f2() {
+  //     console.log(2,scope) //undefined
+  //     var scope = '2-local'
+  //     console.log(3,scope) //2-local
+  //   }
+  //   f2()
+  //   console.log(4,scope) //1-local
+  // }
+  // f2()
+  // console.log(5,scope)  //global
+  //Go.scope == global
+  //Go.f  == function()
+  //f.AO.scope   1-local
+  //f.AO.f2  function()
+  //f2.ao.scope   2-local
+
+
+  //练习1：
+  //  function test(x,x){
+  //    console.log(x) //function()
+  //    x = 5
+  //    console.log(arguments) //[12,5]
+  //    function x() {
+  //      console.log("haha")
+  //    }
+  //  }
+  //
+  //  test(12,13)
+  // //go.test   function()
+  //  //test.ao.arguments  [12,function] =>[12,5]
+  //  //test.ao.x  =>12=>13  =>function()  =>5
+
+  //练习2:
+  // b = "cba"  //没有var  不算声明
+  //
+  // function a(a, a) {
+  //   console.log(a)  //function()
+  //   console.log(b)  //undefined
+  //   var b = "abc"
+  //
+  //   a()
+  //
+  //   function a() {
+  //     console.log(a)  //function()
+  //     console.log(b)  //'abc'
+  //   }
+  // }
+  //
+  // a(5,10)
+
+  //Go.a =>function()
+  //a.Ao.arguments  => [5,function()]
+
+
+  // 练习3
+  console.log(x, y)
+  console.log(z)
+  var x = 1, y = z = 0
+  // var x
+  // x = 1
+  //var y
+  //z=0
+  //y=z
+
+
+  function add(n) {
+    return n = n = 1
+  }
+
+  y = add(x)
+
+  //后面的add函数把前面的add覆盖了
+  function add(n) {
+    return n = n + 3
+  }
+
+  z =  add(x);
+
+  //问x,y,z
+  //x=1 y=4,z=4
+
+
+</script>
+</body>
+</html>

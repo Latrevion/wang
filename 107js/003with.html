@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>003with</title>
+</head>
+<body>
+<script>
+  //1.
+  // function f(p1,x) {
+  //   with (p1){
+  //     // 5000
+  //     console.log(x)
+  //   }
+  // }
+  //
+  // var p = {
+  //   value1:3,
+  //   value2:5,
+  //   x:25
+  // }
+  //
+  // f(p, 5) //5
+
+  // 2
+  var p = {
+    values: {
+      value1: 1
+    }
+  }
+
+  with (p.values){
+    //5000hang
+    p.values = {
+      value2:15
+    }
+    //5000hang
+    console.log(value1) //1
+  }
+
+  console.log(p.values.value1)//undefined
+</script>
+</body>
+</html>

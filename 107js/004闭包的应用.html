@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>004闭包的应用</title>
+</head>
+<body>
+<script>
+  var count = 0
+  //两万行代码
+
+  // 1.共有变量 一个变量，一个函数
+  //   function createCounter() {
+  //     var count =0
+  //     function counterAdd() {
+  //       count++
+  //       console.log(count)
+  //       return count
+  //     }
+  //     return counterAdd
+  //   }
+  //
+  //   var  counter = createCounter()
+  //   counter()
+  //   counter()
+  //   counter()
+
+  // 2.缓存存储结构，多个变量，多个函数
+
+  // function createCounter() {
+  //   var count = 0
+  //
+  //   function counterAdd() {
+  //     count++
+  //     console.log(count)
+  //     return count
+  //   }
+  //
+  //   function counterTwo() {
+  //     count += 2
+  //     console.log(count)
+  //     return count
+  //   }
+  //
+  //   function clear() {
+  //     count = 0
+  //     console.log(count)
+  //     return count
+  //   }
+  //
+  //   return [counterAdd, counterTwo, clear]
+  // }
+  //
+  // var countActions = createCounter()
+  // countActions[0]()
+  // countActions[0]()
+  // countActions[1]()
+  // countActions[0]()
+  // countActions[2]()
+  // countActions[0]()
+
+  //模块化 jQuery
+  // function createCounter(x) {
+  //   var count = 0
+  //   var counter ={
+  //     counterAdd:function () {
+  //       count++
+  //       console.log(x, count)
+  //       return count
+  //     },
+  //     counterAddTwo:function () {
+  //       count +=2
+  //       console.log(x, count)
+  //       return count
+  //     },
+  //     clearAction:function () {
+  //       count = 0
+  //       console.log(x, count)
+  //       return  count
+  //     }
+  //   }
+  //     return counter
+  // }
+  //
+  // var counter = createCounter(1)
+  // counter.counterAdd()
+  // counter.counterAdd()
+  // counter.counterAddTwo()
+  // counter.counterAdd()
+  // counter.clearAction()
+  // counter.counterAdd()
+  //
+  // var counter2 = createCounter(2)
+  // counter2.counterAdd()
+
+
+  //练习：模块化的方式
+  //写一个key生成器
+  //getANumber返回一个不重复的整数
+  // getAName()返回一个不重复的字符串
+  // reset()重置
+
+</script>
+</body>
+</html>

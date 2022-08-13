@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>003String</title>
+</head>
+<body>
+<script>
+  // string是原始类型，String对象
+  //js里没有char型变量
+  // var str = 'abcde'
+  // // str[0]='A'  //没效果  因为包装类，后面会被摧毁
+  // var str = 'Abcde'
+  // for (var i = 0;i<str.length;i++){
+  //   console.log(str[i])
+  // }
+
+  // str.a = 15
+  // //包装类
+  // console.log(str.a)
+
+  //字符串的常用方法
+  //string.length  返回字符串的长度
+
+  //string.charAt() 索引
+  // var str = "012345"
+  // console.log(str.charAt(0))  //0
+  // console.log(str[0])  //0
+
+  //String.formCharCode()  (ASCII值，可以多个)
+  // var str = String.fromCharCode(107,108,109)
+  // console.log(str)
+
+  // string.concat() 拼接字符串 ，可以多个。用+号效果类似
+
+  // string.indexOf,查找字符串
+
+  // string.lastIndexOf() 查找字符串，从后往前查
+
+  // string.replace 替换字符串 需要写正则表达式
+  // var str = 'hello world'
+  // console.log(str.replace(/o/g,"AA"))
+
+
+  // string.slice()  截一块出来，不影响原来的字符串
+
+  // string.split 基于某个分割字符，把字符串切割成字符串数组，不影响原来字符串
+  // var str = 'png|ipg|bmp|gif'
+  // var strArray = str.split('|')
+  // console.log(strArray)
+
+
+  // string.substr(start,length) 截取字符串
+  // string.substring(start,end) 截取字符串 end是第一个不取的位置
+  // var str = 'abcdefg'
+  // console.log(str.substr(1, 3))
+  // console.log(str.substring(1, 4))
+
+  // str.toLowerCase() 转小写
+  // str.toUpperCase() 转大写
+  // var str = 'AbCd'
+  // console.log(str.toLowerCase())
+  // console.log(str.toUpperCase())
+
+  // string.trim() .trimLeft()   .trimRight() 去掉两遍的空格
+  // var  str = ' abc '
+  // console.log('!'+str+'!')
+  // console.log('!'+str.trimLeft()+'!')
+  //
+  // var str2= '\t\tbcd\t\tefg\t\t'
+  // console.log('!'+str2+'!')
+  // console.log('!'+str2.trim()+'!')
+
+</script>
+</body>
+</html>

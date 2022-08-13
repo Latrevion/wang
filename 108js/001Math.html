@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>001Math</title>
+</head>
+<body>
+<script>
+  //内置对象Math
+  // console.log(typeof Math) //Object
+  // console.log(typeof Number) //Function
+
+  //常量
+  // console.log(Math.PI)
+  // console.log(Math.E)
+  // console.log(Math.LN2)
+  // console.log(Math.LN10)
+  // console.log(Math.LOG2E)
+  // console.log(Math.LOG10E)
+  // console.log(Math.SQRT2)
+  // console.log(Math.SQRT1_2)
+
+  //成员函数
+  // 绝对值
+  // console.log(Math.abs(10))
+  // console.log(Math.abs(-10))
+
+  //三角函数 弧度-角度 2PI-360deg
+  // console.log(Math.sin(Math.PI / 3))
+  // console.log(Math.cos(Math.PI / 3)) //精度不够
+  // console.log(Math.tan(Math.PI / 3))
+
+  // 反三角函数 弧度制
+  // console.log(Math.asin(1))
+  // console.log(Math.acos(1))
+  // console.log(Math.atan(1))
+  // console.log(Math.atan2(1, 1))
+
+  //四舍五入，取整
+  //   console.log(Math.round(13.4))
+  //   console.log(Math.round(13.5))
+  //
+  //   //取整
+  //   console.log(Math.floor(12.7))
+  //   console.log(Math.ceil(12.7))
+  //
+  //   //找到最接近的单精度数
+  //   console.log(Math.fround(13.4))
+  //
+  //   //指数和对数  e为底
+  //   console.log(Math.exp(3.21))
+  //   console.log(Math.log(25))
+  //
+  //   // 任意数的指数
+  //   console.log(Math.pow(10, 2))
+  //
+  //   // 根号
+  //   console.log(Math.sqrt(4))
+  //
+  // // 求最大值最小值
+  //   console.log(Math.max(1, 2, 3, 5, 44))
+  //   console.log(Math.min(1, 2, 3, 5, 44))
+
+
+  // 随机值 0-1之间的平均分布的小数
+  // console.log(Math.random())
+  // console.log(Math.random())
+  // console.log(Math.random())
+
+  //产生离散的数 平均分布 1-6
+  // console.log(Math.floor(Math.random() * 6) + 1)
+  // console.log(Math.floor(Math.random() * 6) + 1)
+  // console.log(Math.floor(Math.random() * 6) + 1)
+  // console.log(Math.floor(Math.random() * 6) + 1)
+
+  // 产生离散的数 3,5,7平均分布
+  // console.log(Math.floor(Math.random() * 3) * 2 + 3)
+  // console.log(Math.floor(Math.random() * 3) * 2 + 3)
+  // console.log(Math.floor(Math.random() * 3) * 2 + 3)
+  // console.log(Math.floor(Math.random() * 3) * 2 + 3)
+
+  // 如何生成正正态分布的小数？(0-1)
+  //Box-Muller transform
+  // function randomNormal() {
+  //   var u1, u2
+  //
+  //   do {
+  //     u1 = Math.random()
+  //   } while (u1 === 0)
+  //
+  //   do {
+  //     u2 = Math.random()
+  //   } while (u2 === 0)
+  //
+  //   var z1 = Math.sqrt(-2 * Math.log(u1))* Math.cos(2 * Math.PI * u2)
+  //
+  //   return z1
+  // }
+  //
+  // console.log(randomNormal())
+  // console.log(randomNormal())
+  // console.log(randomNormal())
+
+
+  // 练习，实现 Marsaglia polar method
+</script>
+</body>
+</html>

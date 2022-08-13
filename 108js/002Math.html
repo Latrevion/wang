@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>002Math</title>
+  <style>
+    /*body {*/
+    /*  background-color: #1bad07;*/
+    /*}*/
+  </style>
+</head>
+<body>
+<script>
+  // 练习 Math.max()
+  //    myMax(有若干个整数);
+
+  // 一个函数,产生一个随机的颜色
+  // CSS: background-color: #xxxxxx;
+  function randomHex() {
+    var rdm = Math.random() * 256
+    rdm = Math.floor(rdm)
+    rdm = rdm.toString(16)
+    if (rdm.length < 2) {
+      rdm = '0' + rdm
+    }
+    return rdm
+  }
+
+  function randomColor() {
+    // 随机的R,G,B,两位的16进制数
+    // 1. 生成 0 ~ 255之间的随机数,离散的
+    // 2. 变成16进制的字符串
+    var r, g, b
+    r = randomHex()
+    g = randomHex()
+    b = randomHex()
+    // 拼接字符串
+    return "background-color:#" + r + g + b
+  }
+  console.log(randomColor())
+  console.log(randomColor())
+  console.log(randomColor())
+  console.log(randomColor())
+
+</script>
+</body>
+</html>

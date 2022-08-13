@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>004JSON</title>
+  <script src="js/jquery-3.3.1.js"></script>
+  <script src="js/jquery.json.min.js"></script>
+</head>
+<body>
+<script>
+  //数据通信，只能依靠字符串
+  // 对象=》字符串 （串行化）   字符串=》对象 （解析）
+  // JSON是一种格式，与对象或者数组是一致的
+
+  // var strJSON = '{\
+  //  "name":"ABC",\
+  //   "age":25\
+  //   }'
+
+
+  //  string=>object
+  //  1.eval() 有安全性问题
+  // var strJSON2 = "(" + strJSON + ")"
+  // var obj1 = eval(strJSON2)
+  //
+  // // 2.JSON.parse(string)
+  // var obj2 = JSON.parse(strJSON)
+  //
+  // // 3.jQuery.parseJSON(string)
+  // var obj3=jQuery.parseJSON(strJSON)
+
+  // object=>string
+  // 1.JSON.stringify()
+  var obj = {
+    name: "ABC",
+    age: 25
+  }
+
+  var strJSON = JSON.stringify(obj)
+  console.log(typeof strJSON, strJSON)
+
+  // 2.jQuery.toJSON()
+  strJSON1 = jQuery.toJSON(obj)
+  console.log(typeof strJSON1,strJSON1)
+
+  //练习1: 把一张九九乘法表（需要程序生成）放入JSON中，然后解析  for循环
+  // var obj = {
+  // 	line1: ['1*1=1'],
+  // 	line2: ['1*2=2', '2*2=4'],
+  // 	line3: ['1*3=3', '2*3=6', '3*3=9'],
+  // 	...
+  // }
+
+  // 练习2: 把多个学生的成绩单放入JSON,然后解析
+  //     学生的信息, 包括: name, birthday, gender, class, {course, score}
+
+
+
+</script>
+</body>
+</html>

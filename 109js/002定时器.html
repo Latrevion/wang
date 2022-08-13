@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>002定时器</title>
+</head>
+<body>
+<div id="txt">
+</div>
+<script>
+  // 定时器 setTimeout调用时只是把任务放置到队列中，然后返回，等到规定的时间到达，会在调用回调函数
+  // 异步
+
+  // function fn() {
+  //   var d =new Date()
+  //   console.log(1,d)
+  // }
+  // setTimeout(fn,5000)
+  // var d = new Date()
+  // console.log(2, d)
+
+  //用setTimeout做个时钟
+ //  var timer;
+ //
+ //  function startTime() {
+ //
+ //    var now = new Date()
+ //    var txt = document.getElementById("txt")
+ //    // txt.innerHTML ='hello world!'
+ //    txt.innerHTML = now.toLocaleTimeString()
+ //    timer= setTimeout(startTime, 200)
+ //  }
+ //
+ // timer= setTimeout(startTime, 200)
+ //
+ //  function clearTime() {
+ //    clearTimeout(timer)
+ //  }
+ //
+ //  setTimeout(clearTime,10000)
+
+
+
+  //setTimeout只有一次
+  // setInterval()每间隔多长时间就运行一次
+
+  var timer;
+
+  function startTime() {
+
+    var now = new Date()
+    var txt = document.getElementById("txt")
+    txt.innerHTML = now.toLocaleTimeString()
+
+  }
+
+  timer= setInterval(startTime, 200)
+
+  function clearTime() {
+    clearInterval(timer)
+  }
+
+  setTimeout(clearTime,10000)
+
+</script>
+</body>
+</html>

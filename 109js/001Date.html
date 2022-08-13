@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>001Date</title>
+</head>
+<body>
+<script>
+  // Date对象 日期和时间
+  // // 1.获得当前时间
+  // var d = new Date()
+  // console.log(d)
+  //
+  // //2.巨大的正整数，从1970年1月1日0点以来 毫秒数
+  // console.log(d.getTime())
+  //
+  // var x =d.getTime()
+  // x /= 1000*3600*24*365
+  // console.log(x)
+
+  // 3.设定年月（0-11）日  setFullYear
+  var d = new Date()
+  d.setFullYear(2019, 3, 1)
+  console.log(d)
+
+  //4.Date()构造函数
+  // var d2 = new Date(2019,3,1)
+  // console.log(d2)
+
+  //5.GMT格林尼治时间   UTC协调世界时间  //打印出来发现没区别，精度在更底层的地方
+  console.log(d.toGMTString())
+  console.log(d.toUTCString())
+
+  //6.设定年，setFullYear()
+  d.setFullYear(2015)
+  console.log(d)
+
+  // 获得年
+  console.log(d.getFullYear())
+
+  // 7.获得月
+  console.log(d.getMonth() + 1)
+
+  //8.获得日
+  console.log(d.getDate())
+
+  //9.获得周几 0 星期日   1-6周一到周六
+  console.log(d.getDay())
+
+  // 10 获得毫秒数
+  var s = d.getTime()
+  console.log(s)
+
+  // 11.克隆
+  var d2 = new Date(d)
+  console.log(d2)
+
+ // 12.获得小时，分钟，秒
+  console.log(d.getHours())
+  console.log(d.getMinutes())
+  console.log(d.getSeconds())
+
+  // 13.如何计算两个时间之间的差
+  var dStart = new Date(2019,4,1)
+  var dEnd = new Date(2019,4,5)
+  console.log((dEnd - dStart)/(1000*3600*24))
+
+  // 14.Date格式化
+  // 日期格式化
+  console.log(d.toDateString())
+  console.log(d.toLocaleDateString())
+
+
+  // 时间格式化
+  console.log(d.toTimeString())
+  console.log(d.toLocaleTimeString())
+
+  //15. 相当于getTime（）
+  var d5 = +new Date()
+  console.log(d5)
+
+</script>
+</body>
+</html>

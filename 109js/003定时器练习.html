@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>003定时器练习</title>
+  <style>
+    #div1{
+      width: 20px;
+      height: 20px;
+      background-color: tomato;
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+<div id="div1"></div>
+<script>
+// 练习2 跑火车
+//1.确定用js的方式可以设定宽，高
+// var div1 = document.getElementById('div1')
+// div1.style.width='400px'
+// div1.style.height='400px'
+
+//2.setTim 20x20 ==》 400x20 3秒钟完成 300ms一次
+// 每次增长38 10次
+
+// 3.改善代码，不要hardcode
+// MAX div最大宽度或高度
+var MAX = 400
+
+// EDGE div的最小宽度或高度
+var EDGE =20
+
+//LENGTH div跑火车的长度
+var LENGTH = MAX-EDGE
+
+//INTERVAL 时间间隔
+// var INTERVAL =300
+var INTERVAL =10
+
+//PERIOD 总时长
+var PERIOD =3000
+
+//SPEED 每次增长的长度
+var SPEED = Math.floor(LENGTH/(PERIOD/INTERVAL))
+
+
+function startLonger() {
+  var div1 = document.getElementById('div1')
+  var width = div1.clientWidth
+
+  if (width<MAX){
+    width +=SPEED
+    div1.style.width =width+'px'
+    setTimeout(startLonger,INTERVAL)
+  }else{
+    div1.style.width =MAX+'px'
+    startShorter()
+  }
+}
+
+
+function startShorter() {
+  var div1 = document.getElementById('div1')
+  var width = div1.clientWidth
+
+  if (width>EDGE){
+    width -=SPEED
+    div1.style.width =width+'px'
+    div1.style.left = (MAX-width)+'px'
+    setTimeout(startShorter,INTERVAL)
+  }else{
+    div1.style.width =EDGE+'px'
+  }
+}
+
+startLonger()
+
+//练习，把跑火车写全
+</script>
+</body>
+</html>

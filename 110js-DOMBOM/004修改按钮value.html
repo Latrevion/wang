@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>004修改按钮value</title>
+</head>
+<body>
+<form action="" id="frm1">
+  <input type="button" value="">
+  <input type="button" value="">
+  <input type="button" value="">
+  <input type="button" value="">
+  <input type="button" value="">
+  <input type="text" value="">
+</form>
+<input type="button" value="AAA">
+<script>
+  //1.给所有的input button初始化
+  var frm = document.getElementById("frm1")
+  var inputs = frm.getElementsByTagName("input")
+  var tmpInput = []
+
+
+  for (var i = 0; i < inputs.length; i++) {
+    if (inputs[i].type === "button") {
+      inputs[i].value = "按钮" + i
+      inputs[i].myI= i
+      //立即执行函数
+      inputs[i].onclick = (function (x) {
+        // console.log(x)
+        return function () {
+          // for (var j = 0; j < inputs.length; j++) {
+          //   inputs[j].value = "按钮" + j
+          // }
+          // this.value = "click"
+          while (tmpInput.length>0){
+            var tmp = tmpInput.pop()
+            tmp.value ="按钮" + tmp.myI
+          }
+
+          inputs[x].value = "click"
+          tmpInput.push(inputs[x])
+        }
+      })(i)
+
+    }
+  }
+
+
+  // 2. 如果一个button被点击,value改成"我被点击", 但是上一个被点击的button value还原.
+
+</script>
+</body>
+</html>

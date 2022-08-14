@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>001DOM</title>
+</head>
+<body>
+<!--<input type="button" value="按钮" id="btn" onclick="alert('hello')">-->
+
+<!--<input type="button" value="按钮" id="btn" onclick="f()">-->
+<input type="button" value="按钮" id="btn">
+<script>
+  // 1. JS直接写在HTML中,不可取
+
+  // 2. JS与HTML相分离
+  // function f() {
+  //   alert('hello')
+  // }
+
+  // 3. 把JS和交互从HTML中剥离
+  window.onload = function () {
+    document.getElementById("btn").onclick = function () {
+      alert("hello")
+    }
+  }
+
+</script>
+</body>
+</html>

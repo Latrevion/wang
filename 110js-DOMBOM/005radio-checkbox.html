@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>005radio-checkbox</title>
+</head>
+<body>
+<from id="frm1">
+  <label>
+    <input type="radio" value="f">男
+  </label>
+  <label><input type="radio" value="m">女</label>
+  <label><input type="radio" value="fm">男女不限</label>
+</from>
+<hr>
+<form id="frm2">
+  <label><input type="checkbox" value="chinese">语文</label>
+  <label><input type="checkbox" value="math">数学</label>
+  <label><input type="checkbox" value="english">英文</label>
+  <label><input type="checkbox" value="physics">物理</label>
+  <label><input type="checkbox" value="chemistry">化学</label>
+</form>
+<script>
+  var frm1 = document.getElementById("frm1")
+  var radios = frm1.getElementsByTagName("input")
+  var tmpRadios = []
+
+  for (var i = 0; i < radios.length; i++) {
+    if (radios[i].type === "radio") {
+      radios[i].onclick = function () {
+        // 如果点击的radio已经是checked,什么都不做,
+        // 如果不是,执行下面的.
+        for (var j =0;j<tmpRadios.length;j++){
+          if (tmpRadios[j]===this){
+            break
+          }
+        }
+
+        if (j ===tmpRadios.length){
+        while (tmpRadios.length > 0) {
+          var tmp = tmpRadios.pop()
+          tmp.checked = false
+        }
+        tmpRadios.push(this)
+
+        }
+      }
+    }
+  }
+
+
+  var frm2 = document.getElementById("frm2")
+  var checkBoxes = frm2.getElementsByTagName("input")
+  var tmpCheckBoxes = []
+
+  for (var i2 = 0; i2 < checkBoxes.length; i2++) {
+    if (checkBoxes[i2].type === "checkbox") {
+      checkBoxes[i2].onclick = function () {
+        //点击之后是先变化checked状态，然后调用onclick
+        // 所以为true，说明没点之前是没选中，为false
+        if (this.checked) {
+          while (tmpCheckBoxes.length > 1) {
+            var tmp = tmpCheckBoxes.shift()
+            tmp.checked = false
+          }
+          tmpCheckBoxes.push(this)
+        } else {
+          for (var j = 0; j < tmpCheckBoxes.length; j++) {
+            if (tmpCheckBoxes[j] === this) {
+              tmpCheckBoxes.splice(j, 1)
+              break
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+</script>
+</body>

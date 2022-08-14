@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>003getElementsByClassName-TagName</title>
+</head>
+<body>
+<p>1234</p>
+<p class="myP">abcd</p>
+<p>5678</p>
+<p class="myP">defg</p>
+<p class="myP">3.14</p>
+
+<form action="">
+  <input type="button" name="Input1" value="按钮1">
+  <input type="button" name="Input1" value="按钮2">
+  <input type="button" name="Input1" value="按钮3">
+  <input type="button" name="Input1" value="按钮4">
+</form>
+<script>
+  var ps = document.getElementsByTagName("p")
+  for (var i = 0; i < ps.length; i++) {
+    ps[i].innerText = "我是修改以后的字符串，现在是第" + i + "行"
+  }
+
+  //HTMLCollection 不是数组，不能用in，forEach
+  // for (var i in ps){
+  // console.log(i)
+  //   ps[i].innerText ='我还是修改以后的字符串，现在是第'+i+'行';
+  // }
+
+  var ps2 = document.getElementsByClassName("myP")
+  for (var i = 0; i < ps2.length; i++) {
+    ps2[i].style.fontSize = "25px"
+    ps2[i].style.fontWeight = "700"
+    ps2[i].style.backgroundColor = "#000"
+    ps2[i].style.color = "skyblue"
+
+  }
+
+  //name只对部分标签有效，form，表单元素，img，iframe
+  var inputs = document.getElementsByName("Input1")
+  for (var i = 0; i < inputs.length; i++) {
+    var style = inputs[i].style
+    style.fontSize = "25px"
+    style.fontWeight = "700"
+  }
+
+
+  // 练习1: table 有表头,有表体,单数行背景是灰色的#ccc,双数行是白色的.
+  // 练习2: 菜单, 单数个菜单的字体颜色是#ff8000, 双数的菜单字体颜色黑色.
+</script>
+</body>
+</html>

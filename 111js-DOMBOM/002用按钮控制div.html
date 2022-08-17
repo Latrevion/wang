@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>002用按钮控制div</title>
+  <script src="common.js"></script>
+  <style>
+    div {
+      height: 100px;
+      width: 100px;
+      background-color: skyblue;
+    }
+
+    .show {
+      display: block;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+<div id="div1" class="show"></div>
+<!--<input type="button" id="btns" value="显示">-->
+<!--<input type="button" id="btnh" value="隐藏">-->
+<input type="button" id="btn" value="隐藏" data-wang="h">
+<script>
+  // 1 用两个按钮实现 显示和隐藏
+// document.querySelector('#btns').onclick=function () {
+//  var div1 =document.getElementById('div1')
+//   removeClassName(div1,'hidden')
+//   addClassName(div1,'show')
+// }
+//
+// document.querySelector('#btnh').onclick=function () {
+//   var div1 =document.getElementById('div1')
+//   removeClassName(div1,'show')
+//   addClassName(div1,'hidden')
+// }
+
+//2.怎么用一个按钮实现显示和隐藏
+//   document.querySelector('#btn').onclick =function () {
+//     var div1 =document.querySelector('#div1')
+//     if (this.value==='隐藏'){
+//       removeClassName(div1,'show')
+//       addClassName(div1,'hidden')
+//       this.value='显示'
+//     }else{
+//       removeClassName(div1,'hidden')
+//       addClassName(div1,'show')
+//       this.value='隐藏'
+//     }
+//   }
+
+
+  //3.一个按钮，不用按钮的value来控制，增加用户数据 用 data-xxx
+  document.querySelector('#btn').onclick =function () {
+    var div1 =document.querySelector('#div1')
+    if (this.dataset['wang']==='h'){
+      removeClassName(div1,'show')
+      addClassName(div1,'hidden')
+      this.value='显示'
+      this.dataset['wang']='s'
+    }else{
+      removeClassName(div1,'hidden')
+      addClassName(div1,'show')
+      this.value='隐藏'
+      this.dataset['wang']='h'
+    }
+  }
+
+</script>
+</body>
+</html>

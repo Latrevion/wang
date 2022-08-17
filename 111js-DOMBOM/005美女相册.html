@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>005美女相册</title>
+</head>
+<body>
+<style>
+  body {
+    background-color: #cccccc;
+    margin: 20px 10%;
+  }
+
+  h2 {
+    color: #333;
+    background-color: transparent;
+  }
+
+  ul {
+    padding: 0;
+  }
+
+  li {
+    list-style: none;
+  }
+
+  a {
+    color: #C60;
+    background-color: transparent;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  #image-gallery {
+    overflow: hidden;
+  }
+
+  #image-gallery > li {
+    float: left;
+    margin: 0 20px 20px 0;
+  }
+
+  #image-gallery > li > a > img {
+    width: 180px;
+    border: 0;
+  }
+
+
+  #image {
+    width: 800px;
+
+  }
+
+</style>
+<h2>美女相册</h2>
+<ul id="image-gallery">
+  <li><a href="image/p1.jpg" title="美女1"><img src="image/s1.jpg" ></a></li>
+  <li><a href="image/p2.jpg" title="美女2"><img src="image/s2.jpg" ></a></li>
+  <li><a href="image/p3.jpg" title="美女3"><img src="image/s3.jpg" ></a></li>
+  <li><a href="image/p4.jpg" title="美女4"><img src="image/s4.jpg" ></a></li>
+</ul>
+<img id="image" src="image/placeholder.png">
+<p id="des">选择一张图片</p>
+<script>
+  //1.改造a的onclick事件
+  //2.阻止a跳转事件
+  //   var as = document.querySelectorAll('#image-gallery>li>a')
+  //   for (var i =0;i<as.length;i++){
+  //     as[i].onclick=function () {
+  //       document.querySelector('#image').src =this.href
+  //       document.querySelector('#des').innerText =this.title
+  //       return false
+  //     }
+  //   }
+
+  document.querySelectorAll('#image-gallery>li>a').forEach(function (element) {
+    element.onclick =function () {
+            document.querySelector('#image').src =this.href
+            document.querySelector('#des').innerText =this.title
+            return false
+    }
+  })
+
+</script>
+</body>
+</html>

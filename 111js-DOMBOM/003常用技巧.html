@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>003常用技巧</title>
+</head>
+<body>
+<!--  <input type="text" id="txt" value="">-->
+<!--<input type="button" id="btn" value="无效" data-state="i">-->
+
+<!--<a id="invalid-a" href="https://www.baidu.com" onclick="alert(123);return false">百度</a>-->
+
+<!--<a id="invalid-a" href="https://www.baidu.com" onclick="return f()">百度</a>-->
+
+<a id="invalid-a" href="https://www.baidu.com" onclick="return f()">百度</a>
+
+<script>
+  //1.txt无效
+  // document.querySelector('#btn').onclick = function () {
+  //   var txt = document.querySelector('#txt')
+  //   if (this.dataset['state']==='i'){
+  //     txt.disabled=true
+  //     this.dataset['state']='v'
+  //     this.value ='有效'
+  //   }else{
+  //     txt.disabled=false
+  //     this.dataset['state']='i'
+  //     this.value ='无效'
+  //   }
+  // }
+
+
+  // 2.让a标签跳转失效
+  //三种方法：
+  // onclick="return false"
+  //   方法一,直接写在HTML标记中
+  //   方法二,return函数,函数故意返回 false
+  // function f() {
+  //   alert(123)
+  //   return false
+  // }
+  //
+	//   方法三,直接改写onclick
+  document.querySelector('#invalid-a').onclick =function () {
+    alert(123)
+    return  false
+  }
+
+</script>
+</body>
+</html>

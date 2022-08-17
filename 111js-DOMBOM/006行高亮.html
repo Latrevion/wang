@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>006行高亮</title>
+</head>
+<style>
+  li {
+    list-style: none;
+    border: 1px solid #cccccc;
+    background: #fff;
+  }
+
+  /*li:hover{*/
+  /*  background: yellow;*/
+  /*}*/
+</style>
+<body>
+<ul>
+  <li>第0行</li>
+  <li>第1行</li>
+  <li>第2行</li>
+  <li>第3行</li>
+  <li>第4行</li>
+  <li>第5行</li>
+  <li>第6行</li>
+  <li>第7行</li>
+  <li>第8行</li>
+  <li>第9行</li>
+</ul>
+<script>
+  var lis = document.querySelectorAll("li")
+  lis.forEach(function (element) {
+    var tmpText = element.innerText
+
+    element.onmouseover = function () {
+      this.style.backgroundColor = "#ff0"
+      this.innerText = '当前行 '+tmpText
+    }
+
+    element.onmouseout = function () {
+
+      this.style.backgroundColor = "#fff"
+      this.innerText = tmpText
+    }
+
+  })
+
+</script>
+</body>
+</html>

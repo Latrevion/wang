@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>004点击小图出大图</title>
+</head>
+<body>
+<a id="alink" href="image/me.jpg"><img src="image/me-small.jpg"></a><br>
+<img id="img" src="">
+<script>
+  document.querySelector('#alink').onclick=function () {
+    document.querySelector('#img').src=this.href
+    return false
+  }
+</script>
+</body>
+</html>

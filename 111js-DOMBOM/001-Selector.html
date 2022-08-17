@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>001-Selector</title>
+  <script src="common.js"></script>
+  <style>
+    #div1 > p {
+      background-color: #ccc;
+      color: deepskyblue;
+      font-size: 25px;
+    }
+
+    #div1 > .c1 {
+      background-color: #cccccc;
+      color: #0f0;
+    }
+
+    #div1 > .c2 {
+      color: yellow;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+<div id="div1">
+  <div>ABC</div>
+  <div class="c1">ABCD</div>
+  <div>AAA</div>
+  <p>123</p>
+  <p>1234</p>
+  <p>1234</p>
+</div>
+<script>
+  // 选择出符合选择器要求的第一个元素
+  // var p = document.querySelector("#div1>p")
+  // p.style.color = "#388E3C"
+
+  // 选择出所有符合选择器的元素
+  var ps = document.querySelectorAll("#div1>p")
+  // console.log(ps) //伪数组 NodeList(3)[p, p, p]
+
+  // for (var i=0;i<ps.length;i++){
+  //   ps[i].style.color = "#388E3C"
+  //   ps[i].style.fontWeight='700'
+  // }
+
+  // for in 无法使用 把不需要的东西也打印出来了
+  // for(var i in ps){
+  // 	console.log(i);
+  // }
+
+  // ps.forEach(function (item,index) {
+  //   console.log(item, index)
+  // })
+
+  for (var i = 0; i < ps.length; i++) {
+    // ps[i].className = "c2"
+    // ps[i].className = "c1 c2"
+    addClassName(ps[i],'c1')
+    addClassName(ps[i],'c2')
+
+    removeClassName(ps[i],'c2')
+    console.log(ps[i].className)
+  }
+
+
+</script>
+</body>
+</html>

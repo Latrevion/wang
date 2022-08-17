@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>009innerText-textContent</title>
+</head>
+<body>
+<p id="p1"></p>
+
+<script>
+  //innerText:设置文本内容，Chrome,FF,IE8支持
+  document.querySelector("#p1").innerText = "i am cool!"
+
+  //textContent 设置文本内容，Chrome,FF,IE8不支持
+  document.querySelector("#p1").textContent ='i am cool!!!!!'
+
+  //innerHTML 设置的是HTML原始字符串
+  document.querySelector("#p1").innerHTML = "<span>i am cool!</sapn>"
+  // 练习,一个form,用于注册,其中有用户名,密码,密码确认,要求:
+  //     检验用户名,不能包括以下字符: 分号,逗号,$符号,/符合,\符号,位数应该至少8位,但是不得超过18位
+  //     检验密码, 密码至少6位，密码中至少要包含一个数字,一个字母和一个符号(!@#$%^&*()_=+`~)
+  //     密码确认必须和密码一致.
+
+</script>
+</body>
+</html>

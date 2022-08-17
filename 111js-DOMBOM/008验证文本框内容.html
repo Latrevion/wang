@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>008验证文本框内容</title>
+  <style>
+    span {
+      color: #aaaaaa;
+    }
+  </style>
+</head>
+<body>
+<input type="password" id="pwd">
+<span id="prompt">尚未发现问题</span>
+<script>
+  document.querySelector('#pwd').onblur=function () {
+      var prompt = document.querySelector('#prompt')
+      if (this.value.length<6){
+        prompt.style.color = '#f00'
+        prompt.innerText ='密码不得少于六位'
+      }
+  }
+</script>
+</body>
+</html>

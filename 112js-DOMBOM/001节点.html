@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>001节点</title>
+</head>
+<body>
+<div id="div1">
+  <div class="cls" style="color: #f00;">
+    <p>sfafasfafasf</p>
+    <div>salfjasl;fas</div>
+  </div>
+  ABCDE
+  <ul class="c123">
+    <li>asdfjalksdf</li>
+    <li>asfsfsdfasd</li>
+  </ul>
+  <!--  12345-->
+  <p>asfjaslkfjaljga</p>
+  <h1>asfhalkjdf;a;</h1>
+</div>
+<script>
+  //节点 元素或属性
+  function showNode(node) {
+    var type = ""
+    switch (node.nodeType) {
+      case 1:
+        type = "element"
+        break
+      case 2:
+        type = "attribute"
+        break
+      case 3:
+        type = "text"
+        break
+      case 8:
+        type = "comment"
+        break
+      default:
+        type = "unknown"
+    }
+    return ("" + node.nodeType + "|" + type + "-" + node.nodeName + "-" + node.nodeValue + ";")
+  }
+
+  var div1= document.querySelector('#div1')
+  // console.log(showNode(div1))
+  //
+  // var idAttr =div1.attributes[0]
+  // console.log(showNode(idAttr))
+  //
+  // var txt = div1.childNodes[2]
+  // console.log(showNode(txt))
+  //
+  // var cmt =div1.childNodes[3]
+  // console.log(showNode(cmt))
+
+  //childNodes里面有所有的node  NodeList
+  // for (var i = 0; i < div1.childNodes.length; i++) {
+  //   console.log(showNode(div1.childNodes[i]))
+  // }
+
+  //children里只有元素  HTMLCollection
+  // for (var i= 0 ;i<div1.children.length;i++){
+  //   console.log(showNode(div1.children[i]))
+  // }
+
+ //遍历 DOM Tree
+ //  function goThrough(node,x) {
+ //    if (node.childNodes!== undefined){
+ //      for (var i =0;i<node.childNodes.length;i++){
+ //        var a =node.childNodes[i]
+ //        console.log(x+showNode(a))
+ //        if (a.attributes !==undefined && a.attributes.lenth!==0){
+ //
+ //          for (var j=0;j<a.attributes.length;j++){
+ //            var b = a.attributes[j]
+ //            console.log(x+'{attr}'+showNode(b))
+ //          }
+ //        }
+ //      goThrough(a,x+'\t')
+ //      }
+ //    }
+ //  }
+ //
+ //  goThrough(div1,'')
+
+
+  // children, 用childNodes实现一个children
+  // function getChildren(element) {
+  //   var children =[]
+  //
+  //   if (element.nodeType === 1&& element.childNodes !== undefined){
+  //     for (var i= 0;i<element.childNodes.length;i++){
+  //       var a = element.childNodes[i]
+  //       if (a.nodeType ===1){
+  //         children.push(a)
+  //       }
+  //
+  //     }
+  //   }
+  //
+  //   return children
+  // }
+  //
+  // console.log(getChildren(div1))
+
+  // //parentNode
+  // console.log(showNode(div1.parentNode))
+  //
+  // //parentElement 同上
+  // console.log(showNode(div1.parentElement))
+  //
+  // // previousSibling  前一个node
+  var ul =div1.childNodes[3]
+  // console.log(showNode(ul.previousSibling))
+  //
+  // //previousElementSibling 前一个Element
+  // console.log(showNode(ul.previousElementSibling))
+  //
+  // //nextSibling
+  // console.log(showNode(ul.nextSibling))
+  //
+  // //nextElementSibling
+  // console.log(showNode(ul.nextElementSibling))
+
+
+  //firstChild
+  // // 在Chrome,FF上: 第一个Node
+  // // 在IE8上: 第一个Element
+  // console.log(showNode(div1.firstChild))
+
+
+  //firstElementChild
+  // // 在Chrome,FF上: 第一个Element
+  // // 在IE8上: 不支持
+  // console.log(showNode(div1.firstElementChild))
+
+  //lastChild
+  // // 在Chrome,FF上: 最后一个Node
+  // // 在IE8上: 最后一个Element
+  // console.log(showNode(div1.lastChild))
+
+
+  // // lastElementChild
+  // // 在Chrome,FF上: 最后一个Element
+  // // 在IE8上: 不支持
+  // console.log(div1.lastElementChild)
+  // console.log(showNode(div1.lastElementChild))
+
+
+  // IE8和Chrome之间的兼容问题如何解决
+  // Node,IE8不支持
+  // element
+
+  //firstElementChild
+  // var firstChild
+  // if (div1.firstElementChild){
+  //   firstChild = div1.firstElementChild
+  // }else{
+  //   firstChild =div1.firstChild
+  // }
+
+  var firstChild = div1.firstElementChild || div1.firstChild
+
+  var lastChild =div1.lastElementChild || div1.lastChild
+
+  var previousSibling =ul.previousElementSibling || ul.previousSibling
+
+  var nextSibling = ul.nextElementSibling ||ul.nextSibling
+
+  console.log(showNode(firstChild))
+
+</script>
+</body>
+</html>

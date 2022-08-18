@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>008如何删除改动节点</title>
+</head>
+<body>
+<p>当前输出字符串！</p>
+<div id="div1">aaaabbbb</div>
+<script>
+  // 1. document.write, 如果在页面加载完毕以后再次调用,会把页面上以前已经有的所有元素全部清除    不建议使用这个
+  //    只用于页面加载时,页面加载完成后不再使用.
+  // window.onload =function () {
+  // document.write('<p>I am cool!</p><input type="button" value="按钮">')
+  //   document.write('<p>I am cool2222!</p><input type="button" value="按钮">')
+  // }
+
+  // 2. 元素.innerHTML
+  // window.onload = function () {
+  //   var div1 = document.querySelector("#div1")
+  //   div1.innerHTML += "<p>I am cool!</p><input type=\"button\" value=\"按钮\">"
+  // }
+
+
+  // 3. document.createElement()
+  var p = document.createElement("p")
+  p.innerHTML = "cool!!!!!!!!"
+  var input = document.createElement("input")
+  //1创建属性的方法
+  // var type = document.createAttribute("type")
+  // type.value = "button"
+  // input.setAttributeNode(type)
+  //2另外一种创建属性的方法
+  input.setAttribute('type','button')
+  console.log(111,input.getAttribute('type'))
+  var value = document.createAttribute("value")
+  value.value = "按钮"
+  input.setAttributeNode(value)
+  console.log(input)
+
+  var div1 = document.querySelector("#div1")
+  div1.appendChild(p)
+  // div1.appendChild(input)
+  div1.insertBefore(input,p)//加塞
+
+
+  // 我们更多的时候使用第二种方法,因为第二种方法更加简单.
+  // 第三种方法能够帮我们产生一个暂时不挂在DOM tree上的元素.
+
+
+  // DOM 删除
+  // 1. remove 自杀
+  // input.remove();
+
+  // 2. 父亲清理门户
+  // console.log(div1.removeChild(input));
+
+  // DOM 改动
+  //   1. 子元素不变,变子元素的属性
+  //   2. 替换子元素
+  var p2 =document.createElement('p')
+  p2.innerText = 'good!!!!!!!!!!!'
+  div1.replaceChild(p2, p) //用新替换旧的
+
+</script>
+</body>
+</html>

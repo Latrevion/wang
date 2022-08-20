@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>005事件的委托</title>
+  <style>
+    li {
+      list-style: none;
+      background-color: #ff0;
+      color: #f00;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+<ul id="ul">
+  <li>没点过</li>
+  <li>没点过</li>
+  <li>没点过</li>
+  <li>没点过</li>
+  <li>没点过</li>
+  <li>没点过</li>
+  <li>没点过</li>
+  <li>没点过</li>
+  <li>没点过</li>
+  <li>没点过</li>
+</ul>
+<script>
+  // 事件的委托
+  Element.prototype.addEvent = function (type, func) {
+    var element = this
+    if (element.addEventListener) {
+      element.addEventListener(type, func)
+    } else if (element.attachEvent) {
+      element.attachEvent("on" + type, function () {
+        func.call(element)
+      })
+    } else {
+      element["on" + type] = func
+    }
+  }
+
+  Element.prototype.stopPropagation = function (e) {
+    e = e || window.event
+
+    if (e.stopPropagation) {
+      e.stopPropagation()
+    } else {
+      e.cancelBubble = true
+    }
+  }
+
+  Element.prototype.preventDefault = function (e) {
+    e = e || window.event
+    if (e.preventDefault) {
+      e.preventDefault()
+    } else {
+      e.returnValue = false
+    }
+  }
+
+  Element.prototype.getTarget = function (e) {
+    e = e || window.event
+    return (e.target || e.srcElement)
+  }
+
+  // var lis =document.querySelectorAll('#ul>li')
+  // for (var i =0;i<lis.length;i++){
+  //     lis[i].addEvent('click',function () {
+  //       this.innerText ='点过了'
+  //     })
+  // }
+
+  var ul = document.querySelector("#ul")
+  ul.addEvent("click", function (e) {
+    var target = this.getTarget()
+    if (target !== this) {
+      target.innerText = "点过了啦"
+    }
+  })
+
+
+</script>
+</body>
+</html>

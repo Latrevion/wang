@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>010-history1</title>
+</head>
+<body>
+<input type="button" id="to2" value="去history2 页面">
+<input type="button"  id="forward" value="前进">
+<script>
+   var btn2 = document.querySelector('#to2')
+   var forward = document.querySelector('#forward')
+
+   btn2.addEventListener('click',function () {
+     location.href = '010-history2.html'
+   })
+
+   forward.addEventListener('click',function () {
+     history.forward()
+   })
+
+   console.log(navigator)
+   console.log(navigator.userAgent)
+</script>
+</body>
+</html>

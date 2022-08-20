@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>003-冒泡和捕获</title>
+  <style>
+    div.clsg {
+      position: relative;
+      width: 500px;
+      height: 500px;
+      background-color: #00ff00;
+    }
+
+    div.clsf {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: tomato;
+      left: 520px;
+      top: 100px;
+    }
+
+    div.clss {
+      position: absolute;
+      left: 320px;
+      top: 100px;
+      width: 100px;
+      height: 100px;
+      background: skyblue;
+    }
+  </style>
+</head>
+<body>
+<div class="clsg">
+  <div class="clsf">
+    <div class="clss"></div>
+  </div>
+</div>
+<script>
+
+  // 冒泡
+  //  addEventListener有三个参数,第三个参数是表明是否是捕获
+  //  如果第三个参数不写,那么事件触发的传递方式就是冒泡,即从底向上
+  var divg = document.querySelector(".clsg")
+  var divf = document.querySelector(".clsf")
+  var divs = document.querySelector(".clss")
+
+  divg.addEventListener("click", function () {
+    console.log("div grandfather is clicked! 冒泡")
+  }, false)
+
+  divf.addEventListener("click", function () {
+    console.log("div father is clicked! 冒泡")
+  }, false)
+
+  divs.addEventListener("click", function () {
+    console.log("div son is clicked! 冒泡")
+  }, false)
+
+  //捕获
+  divg.addEventListener("click", function () {
+    console.log("div grandfather is clicked! 捕获")
+  }, true)
+
+  divf.addEventListener("click", function () {
+    console.log("div father is clicked! 捕获")
+  }, true)
+
+  divs.addEventListener("click", function () {
+    console.log("div son is clicked! 冒泡222")
+  }, false)
+
+  divs.addEventListener("click", function () {
+    console.log("div son is clicked! 捕获")
+  }, true)
+
+  // 捕获和冒泡的执行顺序:   先捕获再冒泡
+  //    1. 祖先节点,按照从高到低,触发捕获
+  //    2. 节点本身,按照绑定顺序,触发冒泡+捕获
+  //    3. 祖先节点,按照从低到高,触发冒泡
+
+</script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>002-事件的解绑定</title>
+  <style>
+    div {
+      width: 100px;
+      height: 100px;
+      background-color: tomato;
+    }
+  </style>
+</head>
+<body>
+<div id="the-d"></div>
+<script>
+  //事件解绑定
+  //1.onType   例子 onclick
+
+
+  var d = document.querySelector("#the-d")
+  // d.onclick=function () {
+  //     console.log('我被点击了，click')
+  // }
+  // d.onclick =null
+
+
+  // 2. removeEventListener('type', function)
+  function divClick1() {
+    console.log('我被点击了，click1')
+  }
+
+  function divClick2() {
+    console.log('我被点击了，click2')
+  }
+
+  function divClick3() {
+    console.log('我被点击了，click3')
+  }
+
+
+  // d.addEventListener('click',divClick1)
+  // d.addEventListener('click',divClick2)
+  // d.addEventListener('click',divClick3)
+
+  // d.removeEventListener('click',divClick)
+
+  // 1. removeEventListener 只能删除 addEventListener加上去的
+  // 2. 删除时,必须有函数;如果你不知道函数,JS途径没有办法查询,更无法删除
+  // 3. 作为程序员,怎么能够知道某个元素上挂了哪些事件？
+
+
+  // 3. detachEvent('onType', function)
+
+  function divClick(){
+  	console.log('被点击了');
+  	console.log(this);
+  }
+
+  d.attachEvent('onclick', divClick)
+
+  d.detachEvent('onclick',divClick)
+
+
+  // 练习,按照 addEvent写一个 removeEvent,同时要兼容IE和Chrome
+</script>
+</body>
+</html>

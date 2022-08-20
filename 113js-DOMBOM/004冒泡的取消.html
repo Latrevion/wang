@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <style type="text/css">
+    div.clsg {
+      position: relative;
+      width: 500px;
+      height: 500px;
+      background-color: #0f0;
+    }
+
+    div.clsf {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background-color: #f00;
+      left: 520px;
+      top: 100px;
+    }
+
+    div.clss {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background-color: #00f;
+      left: 320px;
+      top: 100px;
+    }
+  </style>
+</head>
+<body>
+<div class="clsg">
+  <div class="clsf">
+    <div class="clss"></div>
+  </div>
+</div>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<a id="aid" href="#">ABCD</a>
+<script type="text/javascript">
+  // 冒泡的取消
+  Element.prototype.addEvent = function(type, func){
+    var element = this;
+    if(element.addEventListener){
+      element.addEventListener(type, func);
+    }else if(element.attachEvent){
+      element.attachEvent('on' + type, function(){
+        func.call(element);
+      });
+    }else{
+      element['on' + type] = func;
+    }
+  }
+
+  Element.prototype.stopPropagation = function(e){
+    e = e || window.event;
+
+    if(e.stopPropagation){
+      e.stopPropagation();
+    }else{
+      e.cancelBubble = true;
+    }
+  }
+
+  Element.prototype.preventDefault = function(e){
+    e = e || window.event;
+    if(e.preventDefault){
+      e.preventDefault();
+    }else{
+      e.returnValue = false;
+    }
+  }
+
+  var divg = document.querySelector('.clsg');
+  var divf = document.querySelector('.clsf');
+  var divs = document.querySelector('.clss');
+
+  // 冒泡的取消中,同时支持IE和Chrome
+  // 1. 在 IE8中, e没有初始化, 在window.event
+  // 2. 冒泡取消的方法, IE8 中是e.cancelBubble = true;
+
+  divs.addEvent('click', function(e){
+    console.log('div son is clicked! 冒泡！');
+    // this.stopPropagation(e);
+  });
+
+  divf.addEvent('click', function(e){
+    console.log('div father is clicked！冒泡！');
+    this.stopPropagation(e);
+    e = e || window.event;
+    // 想知道谁是事件的起源  e.target
+    var target = e.target || e.srcElement;
+    console.log(e.target, e.srcElement);
+  });
+
+  divg.addEvent('click', function(){
+    console.log('div grand father is clicked! 冒泡！');
+  });
+
+  // 阻止默认事件行为
+  // 1. return false
+
+  // document.oncontextmenu = function(){
+  // 	console.log('right click triggered context menu!');
+  // 	return false;
+  // }
+
+  // 2. Chrome: e.preventDefault()
+  //       IE8: e.returnValue = false;
+
+  document.body.addEvent('contextmenu', function(e){
+    this.preventDefault(e);
+  });
+  //
+  // var aid = document.querySelector('#aid');
+  // aid.addEvent('click', function(e){
+  //   this.preventDefault(e);
+  // });
+
+</script>
+</body>
+</html>

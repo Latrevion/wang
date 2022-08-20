@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>001事件</title>
+  <style>
+    div {
+      width: 100px;
+      height: 100px;
+      background-color: tomato;
+    }
+  </style>
+</head>
+<body>
+<div id="the-d">
+
+</div>
+<script>
+  //事件绑定
+  //1.onType
+  //     两个特点: 1, 兼容性非常好
+  //               2, 如果调用两次,后面的回调会覆盖前面的回调
+  //     假定事件的名字是click
+
+  var d = document.querySelector("#the-d")
+  // d.onclick=function () {
+  //     console.log('我被点击了，click')
+  // }
+  //
+  // d.onclick =function () {
+  //   console.log('我被又有点击了，又又，click')
+  // }
+
+  // 2. addEventListener('type', function)
+  //     两个特点: 1. 如果调用两次, 都有效
+  //              2. IE8及以下不支持
+  // d.addEventListener('click',function () {
+  //   console.log('我被点击了，click')
+  // })
+  //
+  // d.addEventListener('click',function () {
+  //   console.log('我又又又被点击了，click')
+  // })
+
+  // 3. attachEvent('onType', function)
+  //      特点: 1. Chrome不支持
+  //            2. 在这个会调用中,this -> window
+  //               只有IE的attachEvent, this是window,其他的都是被触发的元素
+  // function divClick(){
+  // 	console.log('被点击了');
+  // 	console.log(this);
+  // }
+  //
+  // d.attachEvent('onclick', function(){
+  // 	divClick.call(d);
+  // })
+
+
+  // 问题:是否可以写一个同时兼容IE和Chrome事件的函数？
+  function divClick() {
+    console.log("我又被点击了！")
+  }
+  //
+  // function addEvent(element, type, func) {
+  //   // 	// 如果要判断一个对象是否有某个成员函数,用这个方法
+  //   if (element.addEventListener) {
+  //     element.addEventListener(type, func)
+  //   } else if (element.attachEvent) {
+  //     element.attachEvent("on" + type, function () {
+  //       func.call(element)
+  //     })
+  //   } else {
+  //     element["on" + type] = func
+  //   }
+  // }
+  //
+  // addEvent(d, "click", divClick)
+
+  // 我们希望通过原型的方式
+  // 构造函数,都有一个prototype原型对象,任何挂在这个原型对象上的函数, 通过构造函数创造出来的对象都可以使用.
+  // var obj = new Object()
+  // console.log(Object.prototype)
+  // Object.prototype.abc = function () {
+  //   console.log('hello world')
+  // }
+  // obj.abc()
+
+
+  Element.prototype.addEvent = function (type, func) {
+    var element =this
+    if (element.addEventListener) {
+          element.addEventListener(type, func)
+        } else if (element.attachEvent) {
+          element.attachEvent("on" + type, function () {
+            func.call(element)
+          })
+        } else {
+          element["on" + type] = func
+        }
+  }
+
+  d.addEvent('click',divClick)
+</script>
+</body>
+</html>

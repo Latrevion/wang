@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>003原型</title>
+</head>
+<body>
+
+<script>
+  function Person(name, age) {//构造函数
+    this.name = name
+    this.age = age
+  }
+
+  // 方法
+  Person.prototype.say = function (saidWords) {
+    console.log(saidWords)
+  }
+
+  //  属性
+  Person.prototype.animalName = "人"
+
+  var person1 = new Person("wang", 25)
+  var person2 = new Person("wang", 25)
+
+  console.log(person1.animalName)
+  console.log(person2.animalName)
+
+  // 原型的方法，可以访问原型中的其他方法和属性，也可以访问实例上的自己的属性
+
+  Person.prototype.say2 = function () {
+    this.say("xiaoWang")
+    console.log(this.animalName)
+    console.log(this.name)
+  }
+
+  person1.say2()
+  person2.say2()
+
+  // 写实例：直接在实例上增加的方法或者属性，是属于实例本身的，不会影响构造函数的原型
+  // 读实例：首先在实例本身上寻找改方法或者属性，如果找不到去原型上找，如果还找不到，返回undefined
+  person1.animalName = "haoRen"
+  // 1
+  console.log(person1.animalName)
+  //2.
+  console.log(person2.animalName)
+
+  // 3
+  delete  person1.animalName
+  console.log('person1.animalName',person1.animalName)
+
+  // 4
+  delete  person2.animalName
+  delete  Person.prototype.animalName
+  console.log('person2.animalName',person2.animalName)
+
+</script>
+</body>
+</html>

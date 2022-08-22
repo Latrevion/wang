@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>002构造对象的问题</title>
+</head>
+<body>
+<script>
+  // Person 对象，name ，age，say
+  //1.工厂方法
+  function createPerson(name, age, saidWords) {
+    var person = {}
+    person.name = name
+    person.age = age
+    person.say = function () {
+      console.log(saidWords)
+    }
+    return person
+  }
+
+
+  var person1 = createPerson("wang", 25, "hello world!")
+
+  // 2.直接
+  //不推荐
+  var person2 = {}
+  person2.name = "wang"
+  person2.age = 25
+  person2.say = function () {
+    console.log("hello world")
+  }
+
+  //推荐的写法
+  var person3 = {
+    name: "wang",
+    age: 25,
+    say: function () {
+      console.log("hello world")
+    }
+  }
+
+  // 3.构造函数
+  // function say(saidWords) {
+  //   console.log(saidWords)
+  // }
+  //
+  //
+  // function Person(name, age) {
+  //   this.name = name
+  //   this.age = age
+  //   this.say = say
+  // }
+  //
+  //
+  // var person4 = new Person("wang", 25)
+  //
+  // var person5 = new Person("wang", 25)
+  // person4.say("hello world!")
+  // person5.say("hello world!")
+  //
+  // console.log(person4.say === person5.say)
+  //
+  // var persons = []
+  //
+  // for (var i =0 ;i<100;i++){
+  //   persons.push(new Person('wang',25))
+  // }
+
+
+  // 原型: 用来让所有构造函数生成的对象可以共享属性和方法
+  function Person(name, age) {//构造函数
+    this.name = name
+    this.age = age
+  }
+
+  Person.prototype.say =function (saidWords) {
+    console.log(saidWords)
+  }
+
+  var person4 = new Person("wang", 25) //实例
+  var person5 = new Person("wang", 25)
+
+  // 产生实例的过程，成为实例化
+
+  person4.say("hello world!")
+  person5.say("hello world!")
+
+  console.log(person4.say === person5.say)
+</script>
+</body>
+</html>

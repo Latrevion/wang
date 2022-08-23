@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>001原型和原型链</title>
+</head>
+<body>
+<div id="div1"></div>
+<script>
+  //Grand的例子
+  // function Grand() {
+  //   this.a ='a'
+  //   this.b =5
+  // }
+  //
+  // var proto =new Object()
+  // proto.c ='c'
+  // proto.f=function () {
+  //   console.log("hello!")
+  // }
+  //
+  // Grand.prototype = proto
+  //
+  // var g =new Grand()
+  //
+  // console.log(g.c)
+  // g.f()
+
+
+  //三层继承的例子
+  var object = new Object()
+  object.objectName = "object"
+
+  function Grand() {
+    this.grandA = "a"
+  }
+
+  Grand.prototype = object
+  object.constructor = Grand
+
+  var grand = new Grand()
+  grand.grandName = "grand"
+  grand.a = 3
+
+  function Father() {
+    this.father = "a2"
+  }
+
+  Father.prototype = grand
+  grand.constructor = Father
+
+  var father = new Father()
+  father.fatherName = "father"
+
+
+  function Son() {
+    this.sonA = "a3"
+  }
+
+  Son.prototype = father
+  father.constructor = Son
+  father.a = 2
+
+  var s = new Son()
+  s.a = 1
+
+  //1.所有挂在原型链对象上的属性和方法,能够被所有的派生实例共享
+  console.log(s.objectName)
+  console.log(s.grandName)
+  console.log(s.fatherName)
+
+  //2.如果访问一个实例的属性或者方法，先从对象本身找起，如果发现没有，会沿着原型链由近至远寻找。
+  //如果找不到，返回undefined
+  console.log(s.a)
+
+  // 3. Document是一个构造函数,原型链: Document -> Node -> EventTarget -> Object
+
+
+  var div1 =document.querySelector('#div1')
+
+
+</script>
+</body>
+</html>

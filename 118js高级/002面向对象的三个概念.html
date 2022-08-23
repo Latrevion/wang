@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>002面向对象的三个概念</title>
+</head>
+<body>
+
+<script>
+  //封装
+  // 继承
+  // 多态
+
+  // 例子 基类 animal： gender，weight，eat() ,sleep()
+  //     派生类 cat：eat（mouse）
+  //       mouse：
+  //            vole  eat（'crop'）
+  //            rat:eat('garbage')
+
+  // 基类
+  function Animal(gender, weight) {
+    this.gender = gender
+    this.weight = weight
+  }
+
+  Animal.prototype.eat = function () {
+    console.log("animal is eating")
+  }
+
+  Animal.prototype.sleep = function () {
+    console.log("sleep. zzZZ")
+  }
+
+  function Cat(gender, weight,name) {
+    //借用构造函数
+    Animal.call(this,gender,weight)
+    this.name =name
+  }
+
+  //原型链继承
+  Cat.prototype = new Animal("male", 2)
+  Cat.prototype.constructor = Cat
+  Object.defineProperty(Cat.prototype,'constructor',{
+    enumerable:false
+  })
+  Cat.prototype.eat = function (mouse) {
+    // 如何知道传进来的对象是一个mouse，js是弱类型
+    // 1.使用原型链来判断   instanceof
+    // console.log(mouse instanceof Mouse)
+    // if (mouse instanceof Mouse) {
+    //   console.log("cat is eating a mouse")
+    //   mouse.f1()
+    //   mouse.f2()
+    //   mouse.f3()
+    // } else {
+    //   console.log("cat can not eat an animal not a mouse")
+    // }
+
+    // 2 基于接口来判断，js是弱类型
+    if (mouse.f1 && mouse.f2 && mouse.f3) {
+      console.log("cat is eating a mouse")
+      mouse.f1()
+      mouse.f2()
+      mouse.f3()
+    } else {
+      console.log("cat can not eat an animal not a mouse")
+    }
+
+  }
+
+  function Mouse() {
+
+  }
+
+  Mouse.prototype = new Animal("male", 1)
+  Mouse.prototype.constructor = Mouse
+  Mouse.prototype.f1 = function () {
+    console.log("f1")
+  }
+  Mouse.prototype.f2 = function () {
+    console.log("f2")
+  }
+  Mouse.prototype.f3 = function () {
+    console.log("f3")
+  }
+
+
+  function Vole() {
+
+  }
+
+  Vole.prototype = new Mouse()
+  Vole.prototype.constructor = Vole
+  Vole.prototype.eat = function () {
+    console.log("a Vole is eating Crop!")
+  }
+
+  function Rat() {
+
+  }
+
+  Rat.prototype = new Mouse()
+  Rat.prototype.constructor = Rat
+  Rat.prototype.eat = function () {
+    console.log("a Rat is eating Garbage1")
+  }
+
+  var v = new Vole()
+  var r = new Rat()
+
+  var cat = new Cat('female',3,'Lucy')
+  var c2 = new Cat('male',2,'Tom')
+  cat.eat(v)
+  cat.eat(r)
+  cat.eat(c2)
+
+  for (var i in cat){
+    console.log('cat:',i)
+  }
+
+
+  var obj = {
+    f1: function () {
+      console.log("obj f1")
+    },
+    f2: function () {
+      console.log("obj f2")
+    },
+    f3: function () {
+      console.log("obj f3")
+    }
+  }
+  cat.eat(obj)
+
+  console.log(cat, c2)
+</script>
+</body>
+</html>

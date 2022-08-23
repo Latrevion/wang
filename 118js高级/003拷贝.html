@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>003拷贝</title>
+</head>
+<body>
+
+
+<script>
+  // 实例 《=》构造函数+原型链
+  // function F1() {
+  //   this.a = 1
+  // }
+  //
+  // var f1 = new F1()
+  // F1.prototype.f = function () {
+  //   console.log('f:',this.a)
+  // }
+
+  //需要加一个变量b，但是又不想让其他的程序收到影响
+  // f1.b = 2
+  //  var f1_2 = new Object()
+  //f1_2.__proto__ = f1
+
+  //更优雅的写法：
+  // var f1_2 =Object.create(f1)
+  //
+  // f1_2.b = 2
+  // f1_2.a = 5
+  //
+  // console.log(f1_2.a, f1_2.b,f1_2.f())
+  // console.log(f1.a, f1.b,f1.f())
+
+
+  function F1(a, b) {
+    if (a.__proto__ && a.__proto__.constructor.name === "F1") {
+      for (var i in a) {
+        if (a.hasOwnProperty(i)) {
+          this[i] = a[i]
+        }
+      }
+    } else {
+      this.a = a
+      this.b = b
+    }
+  }
+
+
+  var f1 = new F1([1, 2], {a: 3, b: 4})
+  // var f2 =new F1(f1)
+  //拷贝继承
+  //1 直接拷贝
+  // var f1_2 = Object.create(f1.__proto__)
+  // for (var i in f1) {
+  //   if (f1.hasOwnProperty(i)) {
+  //     f1_2[i] = f1[i]
+  //   }
+  // }
+
+  // 2.拷贝改造函数
+  // var f1_2 = new F1(f1)
+
+
+  //3.深拷贝函数 把a拷贝给b
+  function deepCopyObject(a) {
+    // 1.拷贝 a的原型
+    var b = Object.create(a.__proto__)
+    // 2.把a自有的所有成员全部拷贝给b
+    for (var i in a) {
+      if (a.hasOwnProperty(i)) {
+        if (!(a[i] instanceof Object)) {
+          b[i] = a[i]
+        } else {
+          b[i] = deepCopyObject(a[i])
+          if (a[i] instanceof Array){
+            b[i].length =a[i].length
+          }
+        }
+      }
+    }
+    return b
+  }
+
+  var f1_2 = deepCopyObject(f1)
+
+  console.log(f1)
+  console.log(f1_2)
+
+  console.log(f1.a === f1_2.a)
+  console.log(f1.b === f1_2.b)
+</script>
+</body>
+</html>

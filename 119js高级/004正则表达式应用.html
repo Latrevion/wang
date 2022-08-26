@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>004正则表达式应用</title>
+</head>
+<body>
+
+<script>
+  //练习：格式化输出
+  var dt = new Date()
+  // console.log(dt)
+
+  Date.prototype.myFormat = function (fmt) {
+    var obj = {
+      "M+": this.getMonth() + 1,
+      "d+": this.getDate(),
+      "h+": this.getHours(),
+      "m+": this.getMinutes(),
+      "s+": this.getSeconds()
+    }
+
+
+    if (/y+/.test(fmt)) {
+      var year = this.getFullYear().toString()
+      if (RegExp.lastMatch.length <= year.length) {
+        year = year.substr(-RegExp.lastMatch.length)
+      }
+      fmt = fmt.replace(RegExp.lastMatch, year)
+    }
+
+    //
+    // if (/M+/.test(fmt)) {
+    //   var month = (this.getMonth() + 1).toString()
+    //   if (RegExp.lastMatch.length > month.length) {
+    //     month = "00000" + month
+    //     month = month.substr(-RegExp.lastMatch.length)
+    //
+    //   }
+    //   fmt = fmt.replace(RegExp.lastMatch, month)
+    // }
+
+    for (var k in obj) {
+      var r = new RegExp(k)
+      if (r.test(fmt)) {
+        var x = obj[k].toString()
+        if (RegExp.lastMatch.length > x.length) {
+          x = "00000" + x
+          x = x.substr(-RegExp.lastMatch.length)
+
+        }
+        fmt = fmt.replace(RegExp.lastMatch, x)
+      }
+    }
+
+
+    return fmt
+  }
+  console.log(dt.myFormat("yyyy年 MM月 dd日 hh时"))
+  console.log(dt.myFormat("yy年-MM月-dd日-hh时"))
+
+</script>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>001正则表达式</title>
+</head>
+<body>
+
+<script>
+  // 正则表达式
+  // 表达式，参数
+  // [0-9]：匹配从0到9的任意一个数字
+  //+:量词 必须出现一次，一次或者多次
+
+  //g：全局的
+
+
+  // 1.正则表达式类
+  // var regExp = new RegExp('[0-9]+','g')
+  var str1 = "1231234131431343134"
+  // console.log(str1.match(regExp))
+
+
+  // 2.直接量，直接表示正则表达式  /表达式/参数
+  // console.log(str1.match(/[0-9]+/g))
+  // console.log(str1.match(/\d+/g))
+  // console.log(str1.match(/[123]+/g))
+  // console.log(str1.match(/123/g))
+  // console.log(str1.match(/(123)+/g))
+  //
+  // var regExp = /[0-9]+/g
+  // console.log(regExp.test(str1))
+  // console.log(typeof regExp)
+  // console.log(regExp instanceof RegExp)
+
+  // -------------------------------------正则表达式的详解-------------------------------------
+  // 3.简单类，单词本身
+  // var str2 = "hello world!"
+  // console.log(str2.match(/hello/g))
+  // console.log(str2.match(/world/g))
+  // console.log(str2.match(/o/g))
+
+  // 4.范围类，[]方括号中的任意一个字符如果能匹配上，都是可以的。
+  // 例子：匹配十进制数?  [0123456789]+  [0-9]+
+  //          二进制数？ [01]+
+  //          十六进制数？[0123456789abcdefABCDEF]+  [0-9a-fA-F]+
+
+  // var str3 = "1346263454"
+  // console.log(str3.match(/[0-9]+/g))
+  // console.log(str3.match(/\d+/g))
+  //
+  // var str4 = "100101011"
+  // console.log(str4.match(/[01]+/g))
+  //
+  // var str5 = "134969458abf"
+  // console.log(str5.match(/[0-9a-fA-F]+/g))
+
+  // 5.负向类，排除 [^],方括号中的任意字符都不能出现
+  var str6 = "sadflkjaslfgkaj12313412zvczcvzvczxc"
+  console.log(str6.match(/[^0-9]+/g))
+
+  // 6.通配符 预定义类
+  // 字符
+  // \d = [0-9]    数字 digital
+  // \D =  [^0-9]  非数字
+  // \w =[a-zA-Z_0-9] 数字字母下划线 用来形成变量名  word
+  //  标识符，变量名： 由数字字母下划线组成，但是不能以数字开头
+  //                /[a-z-A-Z_]\w*/
+  // \W = [^a-zA-Z_0-9] 其他
+  //  \s = [\t\n\r\f\v ]  所有空格或者空白
+  // \S =[^\t\n\r\f\v ]非空格或者非空白
+  // . = [^\n\r] 除了回车以外的所有字符
+
+  // 位置，不含字符
+  // \b 表示边界（两个字符中间的位置） 一边是\w,一边是\W
+  //  \B 不是边界，两边都是\w,或者两边都是\W
+  // ^ 开始
+  // $ 结尾
+
+
+  var houseNumbers = ["101", "513", "1204", "805", "806", "1405"]
+
+  //练习：把三个数字组成的门牌号适配出来
+  // test 正则表达式.test(string) true：false
+  //  for(var i =0;i<houseNumbers.length;i++){
+  //    // if (/^\d\d\d$/.test(houseNumbers[i])){
+  //    if (/^\d{3}$/.test(houseNumbers[i])){
+  //      console.log(houseNumbers[i])
+  //    }
+  //  }
+
+  //练习：把八楼的门牌号显示出来
+  //  for (var i =0;i<houseNumbers[i];i++){
+  //    if (/^8\d\d$/.test(houseNumbers[i])){
+  //      console.log(houseNumbers[i])
+  //    }
+  //  }
+
+
+  //练习：把尾号为单数的房间全部选择出来
+  // for (var i =0;i<houseNumbers[i];i++){
+  //   if (/[13579]$/.test(houseNumbers[i])){
+  //     console.log(houseNumbers[i])
+  //   }
+  // }
+
+  //7.量词 任何一个单位允许出现的次数
+  // {n} 出现n次
+  // {m,n} 最少出现m次，最多出现n次
+  //{m,}最少出现m次，最多不限制
+  //？= {0,1} 要么出现0次，要么1次
+  //+ ={1,}
+  // * ={0,1}
+
+  //贪婪量词  ？ +  * 独立使用 找到最大匹配串
+  //惰性量词 '*?' '+?' 找到即可停止
+
+  // var str7 = 'abbbaaabbbaaabbbb1234'
+  // console.log(str7.match(/.*bbb/g))
+  // console.log(str7.match(/.*?bbb/g))
+
+  //8.分组, 一个正则表达式,不但可以对整个匹配进行操作,并且还可以对其中()中的子串进行匹配
+  //     (pattern), 捕获pattern匹配的结果, 自动设定好分组
+  //     \1 正则表达式中反向引用, RegExp.$1 在JS中反向引用
+
+  // var str8 = 'mon and dad'
+  // console.log(str8.match(/mon( and dad)?/))
+  // console.log(RegExp.$1)
+
+  // var str9 = 'word   excel   excel   hello   world   world!'
+
+  // console.log(str9.match(/([a-zA-Z]+)\s+\1/g))
+
+  //     (?<name>pattern)  捕获pattern匹配的结果, 自动设定好分组, 同时设定那么为组名
+  //     \k<name> 反向引用
+  // console.log(str9.match(/(?<word>[a-zA-Z]+)\s+\k<word>/g))
+  //参数g，全局的，给出所有匹配的子串
+  // 没有的话，第一次匹配后停止，给出更多的信息
+  //0：匹配的串 JS RegExp.lastMatch
+  //1：捕获的串 JS  RegExp.$1
+  //groups: 如果你使用了名字形式的分组，name所有有名字的分组会放到groups里面
+  // index： 匹配的串的起始位置
+  // input： 原来的串
+  // console.log(str9.match(/(?<word>[a-zA-Z]+)\s+\k<word>/))
+  // console.log(RegExp.lastMatch)
+  // console.log(RegExp.$1)
+
+  // 9.断言 定语
+  //   零宽-后行 断言  pattern(?=)
+  // var str10= 'reaaa;rcaaa=bbb=;'
+  // // 匹配 以分号结尾的 两个字母
+  // console.log(str10.match(/[a-z]{2}(?=;)/g))
+  //
+  // //   零宽-先行 断言 (?<=x)pattern
+  // // 匹配 以ea开头的 四个字符
+  // console.log(11,str10.match(/(?<=ea).{4}/g))
+  //
+  // //   零宽-负向-后行 断言  pattern(?!)
+  // // 匹配 不以分号结尾的 三个字母
+  // console.log(str10.match(/[a-z]{3}(?!;)/g))
+  //
+  // //   零宽-负向-先行 断言 (?<!x)pattern
+  // // 匹配 不以re开头的三个字母a
+  // console.log(str10.match(/(?<!re)[a]{3}/g))
+
+  // 10.  或 |
+  var str11 = 'var abcd;'
+  var str12 = 'function f(){}'
+
+
+  //变量声明： /\s*var\s+[a-zA-Z_]\w*;?/
+  //函数声明： /\s*function\s+[a-zA-Z_]\w*\s*\(\)\{\}/
+
+  console.log(str11.match(/\s*var\s+(?<variable>[a-zA-Z_]\w*);?/))
+  console.log(str12.match(/\s*function\s+(?<functionName>[a-zA-Z_]\w*)\s*\(\)\{\}/))
+  console.log(str11.match(/\s*var\s+(?<variable>[a-zA-Z_]\w*);?|\s*function\s+(?<functionName>[a-zA-Z_]\w*)\s*\(\)\{\}/))
+
+
+</script>
+</body>
+</html>

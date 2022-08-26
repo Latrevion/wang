@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>002练习</title>
+</head>
+<body>
+
+<script>
+  // 练习
+  // 1.匹配手机号码  11位，130-0000-0000,1300000000
+  // var regexp = /^1[34579]\d-?\d{4}-?\d{4}$/
+  //
+  // var phoneNumber1 =  '13000000000'
+  // console.log(phoneNumber1.match(regexp))
+  //
+  // var phoneNumber2 =  '130-0000-0000'
+  // console.log(phoneNumber2.match(regexp))
+  //
+  //
+  // var phoneNumber3 ='999999'
+  // console.log(phoneNumber3.match(regexp))
+
+  //2.匹配邮箱：字母 数字 下划线 -  . @ xxxx.xxxx.xxx 数字，字母，下划线，-
+  // var regExp = /^[\w\-\.]+@[\w\-]+(?:\.[\w]{2,}){1,3}$/
+  // var email = "aaa-1bbb.@163.com.cn"
+  // console.log(email.match(regExp))
+
+  //3.匹配整数19，+45 ，-15,0
+  // regExp = /^[+-]?\d+$/
+  // var num='1999'
+  // console.log(num.match(regExp))
+  //
+  // num='-1'
+  // console.log(num.match(regExp))
+  //
+  //
+  // num='+3'
+  // console.log(num.match(regExp))
+
+  // 4.匹配浮点数  整数 小数 12.34 0.57 科学计数法 1.23E5 5.27E-3
+  // var regExp = /^[+-]?\d+(?:\.\d+)?(?:[Ee][+-]?\d+)?$/
+  //
+  // var flt = '100'
+  // console.log(flt.match(regExp))
+  //
+  // flt='-0.47'
+  // console.log(flt.match(regExp))
+  //
+  //
+  // flt='1.2E5'
+  // console.log(flt.match(regExp))
+  //
+  //
+  // flt='-3.2E-8'
+  // console.log(flt.match(regExp))
+
+  // 5.匹配中国字
+  var regExp =/^[\u4e00-\u9fa5\uff0c\uff01\u3002]+$/
+  var str ='弱小和无知不是生存的障碍，傲慢才是！'
+  console.log(str.match(regExp))
+
+</script>
+</body>
+</html>

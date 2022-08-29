@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>002-ES6-Babel在线转换</title>
+</head>
+<body>
+
+<script type="text/javascript">
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+
+var MyMath = /*#__PURE__*/function () {
+  "use strict";
+
+  function MyMath() {
+    _classCallCheck(this, MyMath);
+
+    console.log('here is constructor!');
+  }
+
+  _createClass(MyMath, [{
+    key: "add",
+    value: function add(a, b) {
+      return a + b;
+    }
+  }]);
+
+  return MyMath;
+}();
+
+var m = new MyMath();
+console.log(m.add(1, 2));
+  </script>
+</body>
+</html>

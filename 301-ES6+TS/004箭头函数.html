@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>004箭头函数</title>
+</head>
+<body>
+
+<script type="module">
+  // 9. 在箭头函数中，不能使用arguments对象
+  //    用rest参数
+  var f1 =function () {
+    console.log(arguments)
+  }
+ f1(1, 2, 3, 4)
+
+  let f2 = (...args)=>{
+    console.log(args)
+  }
+  (f2(1, 2, 3, 4))
+</script>
+</body>
+</html>

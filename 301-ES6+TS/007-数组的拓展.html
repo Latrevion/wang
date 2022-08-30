@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>007-数组的拓展</title>
+</head>
+<body>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+
+<script type="module">
+   let divs =document.querySelectorAll('div')
+   console.log(divs.__proto__.constructor.name)
+   console.log(divs)
+
+   let array = Array.from(divs)
+   console.log(array.__proto__.constructor.name)
+   console.log(array)
+
+</script>
+</body>
+</html>

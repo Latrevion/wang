@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<script type="module">
+  let divs = document.querySelectorAll("div")
+
+  // let divMap = new Map()
+  let divMap = new WeakMap()
+  let divSet = new WeakSet()
+
+  let data = {}
+  data.a = 5
+  data.b = 3
+
+  //divs[1].myData = data
+  divMap.set(divs[1], data)
+  divs[1].remove()
+  //divs[1]无法释放内存
+
+
+</script>
+</body>
+</html>
